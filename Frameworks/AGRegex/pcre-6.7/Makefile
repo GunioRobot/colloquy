@@ -58,7 +58,7 @@ MANDIR = ${prefix}/man
 # OBJEXT is set by configure to the extention of an object file
 # The BUILD_* equivalents are the same but for the host we're building on
 
-EXEEXT = 
+EXEEXT =
 OBJEXT = o
 # Note that these are just here to have a convenient place to look at the
 # outcome.
@@ -68,8 +68,8 @@ BUILD_OBJEXT = $(OBJEXT)
 # POSIX_OBJ and POSIX_LOBJ are either set empty, or to the names of the
 # POSIX object files.
 
-POSIX_OBJ = 
-POSIX_LOBJ = 
+POSIX_OBJ =
+POSIX_LOBJ =
 
 # The compiler, C flags, preprocessor flags, etc
 
@@ -77,8 +77,8 @@ CC = gcc
 CXX = g++
 CFLAGS = -g -O2
 CXXFLAGS = -g -O2
-LDFLAGS = 
-CXXLDFLAGS = 
+LDFLAGS =
+CXXLDFLAGS =
 
 CC_FOR_BUILD = $(CC)
 CFLAGS_FOR_BUILD = $(CFLAGS)
@@ -88,12 +88,12 @@ LDFLAGS_FOR_BUILD = $(LDFLAGS)
 
 UCP = -DSUPPORT_UCP
 UTF8 = -DSUPPORT_UTF8
-NEWLINE = 
+NEWLINE =
 POSIX_MALLOC_THRESHOLD = -DPOSIX_MALLOC_THRESHOLD=10
-LINK_SIZE = 
-MATCH_LIMIT =  
-NO_RECURSE = 
-EBCDIC = 
+LINK_SIZE =
+MATCH_LIMIT =
+NO_RECURSE =
+EBCDIC =
 
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644

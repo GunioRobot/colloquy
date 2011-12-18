@@ -36,7 +36,7 @@ while [ $# -gt 0 ] ; do
     7) do7=yes;;
     8) do8=yes;;
     9) do9=yes;;
-    valgrind) valgrind="valgrind -q";; 
+    valgrind) valgrind="valgrind -q";;
     *) echo "Unknown test number $1"; exit 1;;
   esac
   shift
@@ -100,7 +100,7 @@ if [ $do1 = no -a $do2 = no -a $do3 = no -a $do4 = no -a \
   if [ "@UTF8@" != "" ] ; then do4=yes; fi
   if [ "@UTF8@" != "" ] ; then do5=yes; fi
   if [ "@UTF8@" != "" -a "@UCP@" != "" ] ; then do6=yes; fi
-  do7=yes 
+  do7=yes
   if [ "@UTF8@" != "" ] ; then do8=yes; fi
   if [ "@UTF8@" != "" -a "@UCP@" != "" ] ; then do9=yes; fi
 fi
@@ -138,7 +138,7 @@ if [ $do2 = yes ] ; then
     echo " "
   else
     echo Test 2 skipped for link size other than 2 \(@LINK_SIZE@\)
-    echo " " 
+    echo " "
   fi
 fi
 
@@ -196,7 +196,7 @@ if [ $do5 = yes ] ; then
     echo " "
   else
     echo Test 5 skipped for link size other than 2 \(@LINK_SIZE@\)
-    echo " " 
+    echo " "
   fi
 fi
 
@@ -213,7 +213,7 @@ if [ $do6 = yes ] ; then
     echo " "
   else
     echo Test 6 skipped for link size other than 2 \(@LINK_SIZE@\)
-    echo " " 
+    echo " "
   fi
 fi
 

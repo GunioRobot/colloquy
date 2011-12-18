@@ -54,7 +54,7 @@ NSString* JXML_SUB_CANCEL_REQUEST = @"/presence[@type='unsubscribe']"; // unsubs
 
     // Setup "to" attribute
     [self putAttribute:@"to" withValue:[jid completeID]];
-    
+
     return self;
 }
 
@@ -126,9 +126,9 @@ NSString* JXML_SUB_CANCEL_REQUEST = @"/presence[@type='unsubscribe']"; // unsubs
     [r putAttribute:@"type" withValue:@"unsubscribed"];
 
     [r autorelease];
-    return r;    
+    return r;
 }
-    
+
 +(JabberSubscriptionRequest*) subscribeTo:(JabberID*)jid withMessage:(NSString*)message
 {
     JabberSubscriptionRequest* r = [[JabberSubscriptionRequest alloc] initWithRecipient:jid];
@@ -137,7 +137,7 @@ NSString* JXML_SUB_CANCEL_REQUEST = @"/presence[@type='unsubscribe']"; // unsubs
         [[r addElementWithName:@"status"] addCData:message];
 
     [r autorelease];
-    return r;    
+    return r;
 }
 
 +(JabberSubscriptionRequest*) grantSubscriptionTo:(JabberID*)jid
@@ -146,7 +146,7 @@ NSString* JXML_SUB_CANCEL_REQUEST = @"/presence[@type='unsubscribe']"; // unsubs
     [r putAttribute:@"type" withValue:@"subscribed"];
 
     [r autorelease];
-    return r; 
+    return r;
 }
 
 +(JabberSubscriptionRequest*) unsubscribeFrom:(JabberID*)jid

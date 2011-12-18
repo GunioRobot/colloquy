@@ -56,7 +56,7 @@ static int netbuf_grow( netbuf_in_t *me ) {
 
 int netbuf_read( netbuf_in_t *me, char *buf, size_t buflen ) {
 	int nread = 0;
-	
+
 	if( ! me -> datalen ) {
 		nread = netbuf_grow( me );
 		if( nread <= 0 ) return nread;

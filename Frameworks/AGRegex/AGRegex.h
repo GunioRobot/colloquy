@@ -16,7 +16,7 @@
 @class AGRegex, NSArray, NSString;
 
 /*!
-@enum Options 
+@enum Options
 Options defined for -initWithPattern:options:. Two or more options can be combined with the bitwise OR operator.
 @constant AGRegexCaseInsensitive Matching is case insensitive. Equivalent to /i in Perl.
 @constant AGRegexDotAll Dot metacharacter matches any character including newline. Equivalent to /s in Perl.
@@ -96,7 +96,7 @@ Returns the target string. */
 Matching is done with -findInString: or -findInString:range: which look for the first occurrence of the pattern in the target string and return an AGRegexMatch or nil if the pattern was not found.
 
 <code>&nbsp;&nbsp;&nbsp;&nbsp;AGRegexMatch *match = [regex findInString:&#64;"paranoid android"];</code>
-    
+
 A match object returns a captured subpattern by -group, -groupAtIndex:, or -groupNamed:, or the range of a captured subpattern by -range, -rangeAtIndex:, or -rangeNamed:. The subpatterns are indexed in order of their opening parentheses, 0 is the entire pattern, 1 is the first capturing subpattern, and so on. -count returns the total number of subpatterns, including the pattern itself. The following prints the result of our last match case:
 
 <code>&nbsp;&nbsp;&nbsp;&nbsp;for (i = 0; i &lt; [match count]; i++)<br />
@@ -127,9 +127,9 @@ Captured subpatterns can be interpolated into the replacement string using the s
 <code>&nbsp;&nbsp;&nbsp;&nbsp;AGRegex *regex = [AGRegex regexWithPattern:&#64;"[usr]"];<br />
 &nbsp;&nbsp;&nbsp;&nbsp;NSString *result = [regex replaceWithString:&#64;"\\u$&amp;." inString:&#64;"Back in the ussr"]; // result is "Back in the U.S.S.R."</code>
 
-Note that you have to escape a backslash to get it into an NSString literal. 
+Note that you have to escape a backslash to get it into an NSString literal.
 
-Named subpatterns may also be used in the pattern and replacement strings, like in Python. 
+Named subpatterns may also be used in the pattern and replacement strings, like in Python.
 
 <code>&nbsp;&nbsp;&nbsp;&nbsp;AGRegex *regex = [AGRegex regexWithPattern:&#64;"(?P&lt;who&gt;\\w+) is a (?P&lt;what&gt;\\w+)"];<br />
 &nbsp;&nbsp;&nbsp;&nbsp;NSString *result = [regex replaceWithString:&#64;"Jackie is a $what, $who is a runt" inString:&#64;"Judy is a punk"]); // result is "Jackie is a punk, Judy is a runt"</code>
@@ -139,7 +139,7 @@ Finally, AGRegex provides -splitString: and -splitString:limit: which return an 
 <code>&nbsp;&nbsp;&nbsp;&nbsp;AGRegex *regex = [AGRegex regexWithPattern:&#64;"ea?"];<br />
 &nbsp;&nbsp;&nbsp;&nbsp;NSArray *result = [regex splitString:&#64;"Repeater"]; // result is "R", "p", "t", "r"</code>
 
-If there are captured subpatterns, they are returned in the array. 
+If there are captured subpatterns, they are returned in the array.
 
 <code>&nbsp;&nbsp;&nbsp;&nbsp;AGRegex *regex = [AGRegex regexWithPattern:&#64;"e(a)?"];<br />
 &nbsp;&nbsp;&nbsp;&nbsp;NSArray *result = [regex splitString:&#64;"Repeater"]; // result is "R", "p", "a", "t", "r"</code>

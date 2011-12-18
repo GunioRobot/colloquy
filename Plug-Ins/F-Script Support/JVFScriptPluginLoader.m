@@ -102,7 +102,7 @@
 
 		return YES;
 	}
-	
+
 	return NO;
 }
 
@@ -113,7 +113,7 @@
 	if( ! [name isAbsolutePath] ) {
 		NSArray *paths = [[_manager class] pluginSearchPaths];
 		NSFileManager *fm = [NSFileManager defaultManager];
-	
+
 		NSEnumerator *enumerator = [paths objectEnumerator];
 		NSString *path = nil;
 		while( ( path = [enumerator nextObject] ) ) {

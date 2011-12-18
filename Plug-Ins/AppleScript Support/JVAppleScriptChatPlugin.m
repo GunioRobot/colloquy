@@ -435,14 +435,14 @@
 						if( icon ) [mitem setImage:icon];
 						[icon release];
 					}
-					
+
 					NSSize size = NSZeroSize;
 					if( [iconSize isKindOfClass:[NSArray class]] && [(NSArray *)iconSize count] == 2 ) {
 						size = NSMakeSize( [[iconSize objectAtIndex:0] unsignedIntValue], [[iconSize objectAtIndex:1] unsignedIntValue] );
 					} else if( [iconSize isKindOfClass:[NSNumber class]] ) {
 						size = NSMakeSize( [iconSize unsignedIntValue], [iconSize unsignedIntValue] );
 					}
-					
+
 					if( [mitem image] && ! NSEqualSizes( size, NSZeroSize ) ) {
 						[[mitem image] setScalesWhenResized:YES];
 						[[mitem image] setSize:size];
@@ -463,7 +463,7 @@
 					[NSBezierPath fillRect:NSMakeRect( 0., 0., size.width, size.height )];
 					[color drawSwatchInRect:NSMakeRect( 1., 1., size.width - 2., size.height - 2. )];
 					[icon unlockFocus];
-					
+
 					[mitem setImage:icon];
 					[icon release];
 				}

@@ -4,11 +4,11 @@
 /*
  * Use this in helper modules for the objc package, and in wrappers
  * for functions that deal with objective-C objects/classes
- * 
- * This header defines some utility wrappers for importing and using 
- * the core bridge. 
  *
- * This is the *only* header file that should be used to access 
+ * This header defines some utility wrappers for importing and using
+ * the core bridge.
+ *
+ * This is the *only* header file that should be used to access
  * functionality in the core bridge.
  *
  */
@@ -52,7 +52,7 @@ struct PyObjC_WeakLink {
 #define PyObjC_BEGIN_WITH_GIL \
 	{ \
 		PyGILState_STATE _GILState; \
-		_GILState = PyGILState_Ensure(); 
+		_GILState = PyGILState_Ensure();
 
 #define PyObjC_GIL_FORWARD_EXC() \
 		do { \
@@ -129,9 +129,9 @@ struct PyObjC_WeakLink {
  * can be used for detecting if a function has been added.
  *
  * HISTORY:
- * - Version 2.2 adds PyObjCUnsupportedMethod_IMP 
- *       and PyObjCUnsupportedMethod_Caller 
- * - Version 2.1 adds PyObjCPointerWrapper_Register 
+ * - Version 2.2 adds PyObjCUnsupportedMethod_IMP
+ *       and PyObjCUnsupportedMethod_Caller
+ * - Version 2.1 adds PyObjCPointerWrapper_Register
  * - Version 2 adds an argument to PyObjC_InitSuper
  * - Version 3 adds another argument to PyObjC_CallPython
  * - Version 4 adds PyObjCErr_ToObjCGILState
@@ -163,12 +163,12 @@ struct PyObjC_WeakLink {
 
 #define PYOBJC_API_NAME "__C_API__"
 
-/* 
+/*
  * Only add items to the end of this list!
  */
 typedef int (RegisterMethodMappingFunctionType)(
-			Class, 
-			SEL, 
+			Class,
+			SEL,
 			PyObject *(*)(PyObject*, PyObject*, PyObject*),
 			void (*)(void*, void*, void**, void*));
 
@@ -227,13 +227,13 @@ struct pyobjc_api {
 	/* PyObjCSelector_GetSelector */
 	SEL	   (*sel_get_sel)(PyObject* sel);
 
-	/* PyObjC_InitSuper */ 	
+	/* PyObjC_InitSuper */
 	void	(*fill_super)(struct objc_super*, Class, id);
 
 	/* PyObjC_InitSuperCls */
 	void	(*fill_super_cls)(struct objc_super*, Class, Class);
 
-	/* PyObjCPointerWrapper_Register */ 
+	/* PyObjCPointerWrapper_Register */
 	int  (*register_pointer_wrapper)(
 		        const char*, PyObject* (*pythonify)(void*),
 			int (*depythonify)(PyObject*, void*)
@@ -259,7 +259,7 @@ struct pyobjc_api {
 
 	/* PyObjC_PythonToCArray */
 	int     (*py_to_c_array)(const char*, PyObject*, PyObject*, void**, int*);
-	
+
 	/* PyObjC_CArrayToPython */
 	PyObject* (*c_array_to_py)(const char*, void*, Py_ssize_t);
 
@@ -312,7 +312,7 @@ struct pyobjc_api {
 	void (*releasetransient)(PyObject* proxy, int cookie);
 
 	void (*doweaklink)(PyObject*, struct PyObjC_WeakLink*);
-	
+
 };
 
 #ifndef PYOBJC_BUILD
@@ -380,7 +380,7 @@ PyObjC_ImportAPI(PyObject* calling_module)
 	PyObject* d;
 	PyObject* api_obj;
 	PyObject* name = PyString_FromString("objc");
-	
+
 	m = PyImport_Import(name);
 	Py_DECREF(name);
 	if (m == NULL) {
@@ -389,14 +389,14 @@ PyObjC_ImportAPI(PyObject* calling_module)
 
 	d = PyModule_GetDict(m);
 	if (d == NULL) {
-		PyErr_SetString(PyExc_RuntimeError, 
+		PyErr_SetString(PyExc_RuntimeError,
 			"No dict in objc module");
 		return -1;
 	}
 
 	api_obj = PyDict_GetItemString(d, PYOBJC_API_NAME);
 	if (api_obj == NULL) {
-		PyErr_SetString(PyExc_RuntimeError, 
+		PyErr_SetString(PyExc_RuntimeError,
 			"No C_API in objc module");
 		return -1;
 	}
@@ -409,7 +409,7 @@ PyObjC_ImportAPI(PyObject* calling_module)
 			"Wrong version of PyObjC C API");
 		return -1;
 	}
-	
+
 	if (PyObjC_API->struct_len < sizeof(struct pyobjc_api)) {
 		PyErr_SetString(PyExc_RuntimeError,
 			"Wrong struct-size of PyObjC C API");
@@ -418,7 +418,7 @@ PyObjC_ImportAPI(PyObject* calling_module)
 
 	Py_INCREF(api_obj);
 
-	/* Current pyobjc implementation doesn't allow deregistering 
+	/* Current pyobjc implementation doesn't allow deregistering
 	 * information, avoid unloading of users of the C-API.
 	 * (Yes this is ugle, patches to fix this situation are apriciated)
 	 */

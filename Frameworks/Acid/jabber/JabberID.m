@@ -1,22 +1,22 @@
 //============================================================================
-// 
+//
 //     License:
-// 
+//
 //     This library is free software; you can redistribute it and/or
 //     modify it under the terms of the GNU Lesser General Public
 //     License as published by the Free Software Foundation; either
 //     version 2.1 of the License, or (at your option) any later version.
-// 
+//
 //     This library is distributed in the hope that it will be useful,
 //     but WITHOUT ANY WARRANTY; without even the implied warranty of
 //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //     Lesser General Public License for more details.
-// 
+//
 //     You should have received a copy of the GNU Lesser General Public
 //     License along with this library; if not, write to the Free Software
-//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
 //     USA
-// 
+//
 //     Copyright (C) 2002-2003 Dave Smith (dizzyd@jabber.org)
 //     Copyright (C) 2002 David Waite (mass@akuma.org)
 //
@@ -36,8 +36,8 @@ static NSMutableDictionary* G_cache;
     return [self retain];
 }
 
-+(BOOL) parseString:(NSString*)jid 
-       intoUsername:(NSString**)username 
++(BOOL) parseString:(NSString*)jid
+       intoUsername:(NSString**)username
        intoHostname:(NSString**)hostname
        intoResource:(NSString**)resource
        intoComplete:(NSString**)complete
@@ -106,7 +106,7 @@ static NSMutableDictionary* G_cache;
                 free(rawdata);
                 return NO;
             }
-            *username = [NSString stringWithUTF8String:buf];            
+            *username = [NSString stringWithUTF8String:buf];
         }
     }
     else
@@ -127,7 +127,7 @@ static NSMutableDictionary* G_cache;
     // Build a complete string from all the constituent parts
     if (*username && *resource)
     {
-        *complete = [NSString stringWithFormat:@"%@@%@/%@", 
+        *complete = [NSString stringWithFormat:@"%@@%@/%@",
                               *username, *hostname, *resource];
     }
     else if (*username)
@@ -144,7 +144,7 @@ static NSMutableDictionary* G_cache;
     {
         *complete = [*hostname retain];
     }
-    
+
     return TRUE;
 }
 
@@ -219,7 +219,7 @@ static NSMutableDictionary* G_cache;
         [self release];
         return [result retain];
     }
-    
+
     // Pre-compute the hash value
     _hash_value = [_complete hash];
 
@@ -243,7 +243,7 @@ static NSMutableDictionary* G_cache;
             uhjid->_hostname = [_hostname retain];
             uhjid->_complete = [key retain];
             uhjid->_hash_value = [key hash];
-            
+
             // Store it in the cache
             [G_cache setObject:uhjid forKey:key];
 
@@ -255,7 +255,7 @@ static NSMutableDictionary* G_cache;
         _userhost_jid = [uhjid retain];
     }
 
-    // Save the result in the cache -- save it once with the 
+    // Save the result in the cache -- save it once with the
     // original string, and once with the proper string prep'd
     // version
     [G_cache setObject:self forKey:_complete];

@@ -11,7 +11,7 @@
 #import "../colloquy/JVChatRoom.h"
 #import "../colloquy/MVChatConnection.h"
 
-@interface NSColor (KAConfigurationAdditions) 
+@interface NSColor (KAConfigurationAdditions)
 + (NSColor *) colorWithHexValue:(NSString *) inColor;
 @end
 
@@ -20,11 +20,11 @@
 @implementation KAConfiguration
 
 - (id) init {
-	
+
 	if ( self = [super init] ) {
 		properties = nil;
 	}
-	
+
 	return self;
 }
 
@@ -69,17 +69,17 @@
 																[NSString stringWithString:@"UTF-8"],   @"Encoding",
 																nil];
 	}
-	
+
 	return self;
 }
 
 - (id) initWithDictionary:(NSDictionary *) inDictionary {
-	
+
 	if ( self = [super init] ) {
 		[inDictionary retain];
 		properties = inDictionary;
 	}
-	
+
 	return self;
 }
 
@@ -88,14 +88,14 @@
 	if ( self = [super init] ) {
 		properties = [NSDictionary dictionaryWithContentsOfFile:filePath];
 	}
-	
+
 	return self;
 }
 
 - (void) dealloc {
 	[properties release];
 	properties = nil;
-	
+
 	[super dealloc];
 }
 
@@ -108,33 +108,33 @@
 - (int) getIntForKey:(NSString *) key {
 	int retVal = -1;
 	NSNumber *num = [properties objectForKey:key];
-	
+
 	if ( num ) {
 		retVal = [num intValue];
 	}
-	
+
 	return retVal;
 }
 
 - (double) getDoubleForKey:(NSString *) key {
 	int retVal = -1.0;
 	NSNumber *num = [properties objectForKey:key];
-	
+
 	if ( num ) {
 		retVal = [num doubleValue];
 	}
-	
+
 	return retVal;
 }
 
 - (BOOL) getBOOLForKey:(NSString *) key {
 	BOOL retVal = NO;
 	NSNumber *num = [properties objectForKey:key];
-	
+
 	if ( num ) {
 		retVal = [num boolValue];
 	}
-	
+
 	return retVal;
 }
 
@@ -177,7 +177,7 @@
 
 @end
 
-@implementation NSColor (KAConfigurationAdditions) 
+@implementation NSColor (KAConfigurationAdditions)
 
 int hexToInt (char hex) {
     if(hex >= '0' && hex <= '9'){
@@ -194,7 +194,7 @@ int hexToInt (char hex) {
 + (NSColor *) colorWithHexValue:(NSString *) inColor {
     const char	*hexString = [inColor cString];
     float 	red, green, blue;
-	
+
     if( hexString[0] == '#'){
         red = ( hexToInt(hexString[1]) * 16 + hexToInt(hexString[2]) ) / 255.0;
         green = ( hexToInt(hexString[3]) * 16 + hexToInt(hexString[4]) ) / 255.0;
@@ -204,7 +204,7 @@ int hexToInt (char hex) {
         green = ( hexToInt(hexString[2]) * 16 + hexToInt(hexString[3]) ) / 255.0;
         blue = ( hexToInt(hexString[4]) * 16 + hexToInt(hexString[5]) ) / 255.0;
     }
-	
+
     return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:1.0];
 }
 

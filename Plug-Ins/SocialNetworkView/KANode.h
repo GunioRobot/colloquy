@@ -12,7 +12,7 @@ double jRandom();
 
 @interface KANode : NSObject {
 	NSString	*_nick;
-	
+
 	double		_weight;
 	double		_x;
 	double		_y;

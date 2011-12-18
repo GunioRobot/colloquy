@@ -6,13 +6,13 @@
 				styleMask:(unsigned int)aStyle
 				  backing:(NSBackingStoreType)bufferingType
 					defer:(BOOL)flag {
-	
+
 	//use NSWindow to draw for us
-	NSWindow* result = [super initWithContentRect:contentRect 
-										styleMask:NSBorderlessWindowMask 
-										  backing:NSBackingStoreBuffered 
+	NSWindow* result = [super initWithContentRect:contentRect
+										styleMask:NSBorderlessWindowMask
+										  backing:NSBackingStoreBuffered
 											defer:NO];
-	
+
 	//set up our window
 	[result setBackgroundColor: [NSColor clearColor]];
 	[result setLevel: NSStatusWindowLevel];
@@ -20,7 +20,7 @@
 	[result setOpaque:NO];
 	[result setHasShadow: YES];
 	[result setCanHide:NO ];
-	
+
 	return result;
 }
 

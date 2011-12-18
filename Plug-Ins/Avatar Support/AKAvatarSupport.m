@@ -67,7 +67,7 @@ NSString *cacheDir = @"~/Library/Caches/info.colloquy.avatarSupport/";
 
 - (void) unload
 {
-	
+
 }
 
 #pragma mark -
@@ -87,7 +87,7 @@ NSString *cacheDir = @"~/Library/Caches/info.colloquy.avatarSupport/";
 		[requestAvatarMenuItem setTarget:self];
 		[requestAvatarMenuItem setRepresentedObject:object];
 		[avatarContextMenuItems addObject: requestAvatarMenuItem];
-		
+
 		//TODO: is this functionality really required? (see below)
 		NSMenuItem *offerAvatarMenuItem = [[[NSMenuItem alloc] initWithTitle:@"Offer Avatar" action:@selector(offerAvatarMenuItemAction:) keyEquivalent:@""] autorelease];
 		[offerAvatarMenuItem setTarget:self];
@@ -115,7 +115,7 @@ NSString *cacheDir = @"~/Library/Caches/info.colloquy.avatarSupport/";
 	else if ( [[sender representedObject] isMemberOfClass:NSClassFromString(@"JVChatRoomPanel")] )
 	{
 		//TODO: ctcp flood handling by the application
-		
+
 		//TODO: enable later
 		/*NSEnumerator *enumerator = [[(MVChatRoom *)[[sender representedObject] target] memberUsers] objectEnumerator];
 		MVChatUser *chatUser = nil;
@@ -125,7 +125,7 @@ NSString *cacheDir = @"~/Library/Caches/info.colloquy.avatarSupport/";
 		}*/
 	}
 	else
-	{	
+	{
 		//TODO: Remove this when done testing
 		NSLog(@"AVATAR: unknown sender for requestAvatarMenuItem: @%", [[[[sender representedObject] target] class ]description]);
 	}
@@ -158,9 +158,9 @@ NSString *cacheDir = @"~/Library/Caches/info.colloquy.avatarSupport/";
 	{
 		_writingUser = (MVChatUser *)[message sender];
 	}
-	
+
 	//NSLog(@"Avatar Support: -- %@ (class), user: %@/%@: %@ (class)", [[[message sender] class] description], [_writingUser serverAddress], [_writingUser nickname], [[[[message sender] user] class] description]);
-	
+
 	//TODO: check for buddies, unless this works for them too (doesnt, *.quakenet.org bug)
 	if ([[_writingUser attributes] objectForKey:@"MVChatUserPictureAttribute"] == nil)
 	{
@@ -208,15 +208,15 @@ NSString *cacheDir = @"~/Library/Caches/info.colloquy.avatarSupport/";
 	if ([[command uppercaseString] isEqualToString:AKAvatarSupportCTCPCommand])
 	{
 		NSArray *argumentArray = [[[[NSString alloc] initWithData:arguments encoding:[[chatUser connection] encoding]] autorelease] componentsSeparatedByString:@" "];
-		
+
 		//TODO: remove NSLog
 		NSLog(@"Avatar Support: <- reply from %@ with arguments %@.", [chatUser nickname], [argumentArray description]);
-		
+
 //		if (weWantToReceiveAvatarFromUser:chatUser)
 //		{
 			//NSLog(@"Avatar Support: <- accepting avatar from %@.", [chatUser nickname]);
 			NSImage *receivedImage = [NSImage alloc];
-			
+
 			//TODO: do some checks first: filezise, evil filetypes...
 			if ([receivedImage initWithContentsOfURL:[NSURL URLWithString:[argumentArray objectAtIndex:0]]])
 			{
@@ -280,10 +280,10 @@ NSString *cacheDir = @"~/Library/Caches/info.colloquy.avatarSupport/";
 	if([self avatarForUser:chatUser])
 	{
 	//TODO: handle buddies differnetly (ask: "add as buddy icon?")
-	
+
 	//TODO This has no actual effect in the app yet
 	[chatUser setAttribute:[self avatarForUser:chatUser] forKey:@"MVChatUserPictureAttribute"];
-	
+
 	//TODO: remove this later, its enough to growl on "received avatar"
 	[[JVNotificationController defaultController] performNotification:@"JVPluginNotification" withContextInfo:
 		[NSDictionary dictionaryWithObjectsAndKeys:[[chatUser attributes] objectForKey:
@@ -300,7 +300,7 @@ NSString *cacheDir = @"~/Library/Caches/info.colloquy.avatarSupport/";
 	{
 		NSLog(@"Avatar Support: -- Avatar exists for user %@", [chatUser nickname]);
 	}*/
-		
+
 	//TODO: what about file type extenstions?
 	return [[NSImage alloc]initWithContentsOfFile: [[[cacheDir stringByExpandingTildeInPath] stringByAppendingPathComponent:[chatUser serverAddress]] stringByAppendingPathComponent:[chatUser nickname]]];
 }

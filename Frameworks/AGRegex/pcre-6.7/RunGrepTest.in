@@ -19,7 +19,7 @@ testdata=./testdata
 
 while [ $# -gt 0 ] ; do
   case $1 in
-    valgrind) valgrind="valgrind -q --leak-check=no";; 
+    valgrind) valgrind="valgrind -q --leak-check=no";;
     *) echo "Unknown argument $1"; exit 1;;
   esac
   shift
@@ -124,19 +124,19 @@ echo "---------------------------- Test 32 -----------------------------" >>test
 $valgrind ./pcregrep -L 'fox' $testdata/grepinput $testdata/grepinputx >>testtry
 
 echo "---------------------------- Test 33 -----------------------------" >>testtry
-$valgrind ./pcregrep 'fox' $testdata/grepnonexist >>testtry 2>&1 
+$valgrind ./pcregrep 'fox' $testdata/grepnonexist >>testtry 2>&1
 echo "RC=$?" >>testtry
 
 echo "---------------------------- Test 34 -----------------------------" >>testtry
-$valgrind ./pcregrep -s 'fox' $testdata/grepnonexist >>testtry 2>&1 
+$valgrind ./pcregrep -s 'fox' $testdata/grepnonexist >>testtry 2>&1
 echo "RC=$?" >>testtry
 
 echo "---------------------------- Test 35 -----------------------------" >>testtry
-$valgrind ./pcregrep -L -r --include=grepinputx 'fox' $testdata >>testtry 
+$valgrind ./pcregrep -L -r --include=grepinputx 'fox' $testdata >>testtry
 echo "RC=$?" >>testtry
 
 echo "---------------------------- Test 36 -----------------------------" >>testtry
-$valgrind ./pcregrep -L -r --include=grepinput --exclude 'grepinput$' 'fox' $testdata >>testtry 
+$valgrind ./pcregrep -L -r --include=grepinput --exclude 'grepinput$' 'fox' $testdata >>testtry
 echo "RC=$?" >>testtry
 
 echo "---------------------------- Test 37 -----------------------------" >>testtry

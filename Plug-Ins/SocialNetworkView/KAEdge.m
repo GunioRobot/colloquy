@@ -16,23 +16,23 @@
 	if ( self = [super init] ) {
 		[inStart retain];
 		_startNode = inStart;
-	
+
 		[inEnd retain];
 		_endNode = inEnd;
-	
+
 		_weight = 0;
 	}
-	
+
 	return self;
 }
 
 - (void) dealloc {
 	[_startNode release];
 	_startNode = nil;
-	
+
 	[_endNode release];
 	_endNode = nil;
-	
+
 	[super dealloc];
 }
 
@@ -59,7 +59,7 @@
 #pragma mark Miscellany
 
 - (BOOL) isEqual:(id) inObj {
-	return ( _startNode == [inObj startNode] && _endNode == [inObj endNode] || 
+	return ( _startNode == [inObj startNode] && _endNode == [inObj endNode] ||
 			 _startNode == [inObj endNode] && _endNode == [inObj startNode] );
 }
 

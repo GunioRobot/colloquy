@@ -247,7 +247,7 @@ typedef void (*XML_EntityDeclHandler) (void *userData,
                                        const XML_Char *systemId,
                                        const XML_Char *publicId,
                                        const XML_Char *notationName);
-				       
+
 XMLPARSEAPI(void)
 XML_SetEntityDeclHandler(XML_Parser parser,
 			 XML_EntityDeclHandler handler);

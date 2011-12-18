@@ -30,7 +30,7 @@ static void mime_msg_free( void *_me ) {
 #define NEXT_LINE( ptr, buflen ) if(( *ptr ) =='\n' ) {( ptr )++;( buflen )--;}
 
 static int mime_parse_part( mime_message_t *msg, char * *content, unsigned long *buflen, char *boundary ) {
-	// move the cursor to the beginning of this part 
+	// move the cursor to the beginning of this part
 	char search[255];
 	snprintf( search, 255, "--%s", boundary );
 
@@ -64,7 +64,7 @@ static int mime_parse_part( mime_message_t *msg, char * *content, unsigned long 
 	me -> boundary = boundary;
 	me -> headers = list_new();
 
-	// parse the mime headers 
+	// parse the mime headers
 	line = strsep( content, "\r\n" );
 	*buflen -= strlen( line ) +1 ;
 
@@ -94,11 +94,11 @@ static int mime_parse_part( mime_message_t *msg, char * *content, unsigned long 
 					if( param_name ) {
 						char *param_value = strsep( &tmp, ";\r\n" );
 						if( param_value ) {
-							// remove leading & trailing \", if any							
+							// remove leading & trailing \", if any
 							if( *param_value == '"' ) {
 								param_value++;
 								param_value = strsep( &param_value, "\"" );
-							} 
+							}
 
 							header -> params -> set( header -> params, param_name, param_value );
 						}
@@ -124,7 +124,7 @@ static int mime_parse_part( mime_message_t *msg, char * *content, unsigned long 
 	// test if we have a multipart/... message.
 	// if yes, we need to parse it by re-calling mime_parse_part
 	char *next_boundary;
-	
+
 	// search the content-type header
 	mime_header_t *header = (mime_header_t *) me -> headers -> first( me -> headers );
 	while( header ) {
@@ -156,8 +156,8 @@ static int mime_parse_part( mime_message_t *msg, char * *content, unsigned long 
 	// - a new part with the same boundary( --boundary )
 
 parse_part:
-	me -> begin = *content;		
-	snprintf( search, 255, "--%s", boundary ); 
+	me -> begin = *content;
+	snprintf( search, 255, "--%s", boundary );
 	int len = 0;
 
 	while( *buflen > 0 ) {
@@ -185,7 +185,7 @@ parse_part:
 		return MIME_ERR;
 	}
 
-	me -> length = len;		
+	me -> length = len;
 
 	return MIME_READ_NEXT_PART;
 }

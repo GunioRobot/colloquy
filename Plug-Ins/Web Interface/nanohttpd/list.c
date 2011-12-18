@@ -15,7 +15,7 @@ list_t *list_new( void ) {
 	me -> position = NULL;
 
 	me -> first = list_first_elem;
-	me -> next = list_next_elem;	
+	me -> next = list_next_elem;
 	me -> add = list_add;
 	me -> remove_func = list_remove_func;
 
@@ -39,13 +39,13 @@ int list_remove_func( list_t *me, int(*cmp_func)( void *, void * ), void *search
 	list_elem_t *next = NULL;
 	list_elem_t *prev = NULL;
 	list_elem_t *elem = me -> data;
-	while( elem ) {	
+	while( elem ) {
 		if( cmp_func( (void *) elem -> data, search) == 0 ) {
 			ret++;
 			if( prev ) prev -> next = elem -> next;
 			else me -> data = elem -> next;
 
-			next = elem -> next;	
+			next = elem -> next;
 			if( free_func  )
 				free_func( (void *) elem -> data );
 			free( elem );

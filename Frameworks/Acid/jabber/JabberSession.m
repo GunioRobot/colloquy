@@ -1,24 +1,24 @@
 //============================================================================
-// 
+//
 //     License:
-// 
+//
 //     This library is free software; you can redistribute it and/or
 //     modify it under the terms of the GNU Lesser General Public
 //     License as published by the Free Software Foundation; either
 //     version 2.1 of the License, or (at your option) any later version.
-// 
+//
 //     This library is distributed in the hope that it will be useful,
 //     but WITHOUT ANY WARRANTY; without even the implied warranty of
 //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //     Lesser General Public License for more details.
-// 
+//
 //     You should have received a copy of the GNU Lesser General Public
 //     License along with this library; if not, write to the Free Software
-//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
 //     USA
-// 
+//
 //     Copyright (C) 2002-2003 Dave Smith (dizzyd@jabber.org)
-// 
+//
 // $Id: JabberSession.m,v 1.3 2005/05/05 05:11:55 gbooker Exp $
 //============================================================================
 
@@ -74,7 +74,7 @@ NSString* STREAM_ROOT = @"<stream:stream xmlns='jabber:client' xmlns:stream='htt
                  name:JSESSION_ENDED];
     [self addObserver:self selector:@selector(onSocketConnectFailed:)
                  name:JSESSION_ERROR_CONNECT_FAILED];
-                                              
+
     return self;
 }
 
@@ -87,7 +87,7 @@ NSString* STREAM_ROOT = @"<stream:stream xmlns='jabber:client' xmlns:stream='htt
     [_expressions release];
 
 	CFRelease(_observerMap);
-    
+
     [super dealloc];
 }
 
@@ -133,7 +133,7 @@ NSString* STREAM_ROOT = @"<stream:stream xmlns='jabber:client' xmlns:stream='htt
 
     // Add the XPath expression to the observer query list
     [queryList addObject:query];
-    
+
     // Now register the observer with the default notification center
     [_ncenter addObserver:observer selector:method
               name:eventName object:nil];
@@ -265,11 +265,11 @@ NSString* STREAM_ROOT = @"<stream:stream xmlns='jabber:client' xmlns:stream='htt
     assert(jid != nil);
     assert (_state == JSS_Closed);
     _state = JSS_Opened;
-    
+
     // Store session JID
     [_jid release];
     _jid = [jid retain];
-    
+
     // Startup a connection
     _jsocket = [[JabberSocket alloc] initWithJabberSession:self];
     [_jsocket setUseSSL:_useSSL];
@@ -306,7 +306,7 @@ NSString* STREAM_ROOT = @"<stream:stream xmlns='jabber:client' xmlns:stream='htt
     // Do auth, if so instructed
     if (_do_auth)
     {
-        // Start the authentication 
+        // Start the authentication
         [_authMgr authenticateJID:_jid forSession:self];
     }
 }

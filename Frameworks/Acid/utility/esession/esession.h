@@ -1,24 +1,24 @@
 //============================================================================
-// 
+//
 //     License:
-// 
+//
 //     This library is free software; you can redistribute it and/or
 //     modify it under the terms of the GNU Lesser General Public
 //     License as published by the Free Software Foundation; either
 //     version 2.1 of the License, or (at your option) any later version.
-// 
+//
 //     This library is distributed in the hope that it will be useful,
 //     but WITHOUT ANY WARRANTY; without even the implied warranty of
 //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //     Lesser General Public License for more details.
-// 
+//
 //     You should have received a copy of the GNU Lesser General Public
 //     License along with this library; if not, write to the Free Software
-//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
 //     USA
-// 
+//
 //     Copyright (C) 2002 Dave Smith (dizzyd@jabber.org)
-// 
+//
 // $Id: esession.h,v 1.1 2004/07/19 03:49:04 jtownsend Exp $
 //============================================================================
 
@@ -53,9 +53,9 @@ typedef enum
 
 typedef enum
 {
-    ES_NEW, 
-    ES_HANDSHAKE, 
-    ES_READY, 
+    ES_NEW,
+    ES_HANDSHAKE,
+    ES_READY,
     ES_ERROR
 } ESessionState;
 
@@ -74,7 +74,7 @@ typedef enum
 typedef const char* (*ESessionGetPassCallback)(const char* privatekey, void* arg);
 
 typedef int (*ESessionChangedKeyCallback)(ESessionKeyType keytype, const char* id,
-                                          const char* old_fingerprint, 
+                                          const char* old_fingerprint,
                                           const char* new_fingerprint,
                                           void* arg);
 
@@ -153,9 +153,9 @@ typedef struct
     char* private_key;
 } _ESessionKeyPair_st, *ESessionKeyPair;
 
-/* 
- * 
- * Global ESession functions 
+/*
+ *
+ * Global ESession functions
  *
  */
 
@@ -163,7 +163,7 @@ int es_get_last_error(void);
 
 const char* es_add_personal_key(const char* private_key);
 
-const char* es_add_public_key(const char* id, ESessionKeyType keytype, 
+const char* es_add_public_key(const char* id, ESessionKeyType keytype,
                               const char* public_key);
 
 void es_set_new_key_cb(ESessionNewKeyCallback* cb, void* arg);
@@ -177,8 +177,8 @@ ESessionKeyPair es_generate_keypair(ESessionKeyType keytype, int bits,
 
 void es_keypair_free(ESessionKeyPair ekp);
 
-/* 
- * 
+/*
+ *
  * ESession instance functions
  *
  */
@@ -194,7 +194,7 @@ void esession_set_mac_algo(ESession es, ESessionMACAlgo ema);
 
 ESessionHandshake esession_handshake_start(ESession es);
 
-ESessionHandshake esession_handshake_load(ESession es, const char* e_str, 
+ESessionHandshake esession_handshake_load(ESession es, const char* e_str,
                                           ESessionMODPGroup group);
 
 int esession_handshake_complete(ESession es, const char* f_str,

@@ -187,7 +187,7 @@ int http_req_parse( http_req_t *me ) {
 				if( buf ) http_req_add_header( me, field_name, strdup( field_value ) );
 			}
 
-			free( orgbuf );			
+			free( orgbuf );
 		} while( strlen( line ) > 2 );
 	}
 

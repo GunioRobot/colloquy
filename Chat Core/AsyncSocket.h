@@ -1,6 +1,6 @@
 //
 //  AsyncSocket.h
-//  
+//
 //  This class is in the public domain.
 //  Originally created by Dustin Voss on Wed Jan 29 2003.
 //  Updated and maintained by Deusty Designs and the Mac development community.
@@ -59,7 +59,7 @@ typedef enum AsyncSocketError AsyncSocketError;
 /**
  * Called when a socket is about to connect. This method should return YES to continue, or NO to abort.
  * If aborted, will result in AsyncSocketCanceledError.
- * 
+ *
  * If the connectToHost:onPort:error: method was called, the delegate will be able to access and configure the
  * CFReadStream and CFWriteStream as desired prior to connection.
  *
@@ -111,7 +111,7 @@ typedef enum AsyncSocketError AsyncSocketError;
 	AsyncReadPacket *theCurrentRead;
 	NSTimer *theReadTimer;
 	NSMutableData *partialReadBuffer;
-	
+
 	NSMutableArray *theWriteQueue;
 	AsyncWritePacket *theCurrentWrite;
 	NSTimer *theWriteTimer;
@@ -198,10 +198,10 @@ typedef enum AsyncSocketError AsyncSocketError;
 /**
  * This reads bytes until (and including) the passed "data" parameter, which acts as a separator.
  * The bytes and the separator are returned by the delegate method.
- * 
+ *
  * If you pass nil or zero-length data as the "data" parameter,
  * the method will do nothing, and the delegate will not be called.
- * 
+ *
  * To read a line from the socket, use the line separator (e.g. CRLF for HTTP, see below) as the "data" parameter.
  * Note that this method is not character-set aware, so if a separator can occur naturally as part of the encoding for
  * a character, the read will prematurely end.
@@ -211,12 +211,12 @@ typedef enum AsyncSocketError AsyncSocketError;
 /**
  * Same as readDataToData:withTimeout:tag, with the additional restriction that the amount of data read
  * may not surpass the given maxLength (specified in bytes).
- * 
+ *
  * If you pass a maxLength parameter that is less than the length of the data parameter,
  * the method will do nothing, and the delegate will not be called.
- * 
+ *
  * If the max length is surpassed, it is treated the same as a timeout - the socket is closed.
- * 
+ *
  * Pass -1 as maxLength if no length restriction is desired, or simply use the readDataToData:withTimeout:tag method.
 **/
 - (void)readDataToData:(NSData *)data withTimeout:(NSTimeInterval)timeout maxLength:(ssize_t)length tag:(long)tag;
@@ -227,7 +227,7 @@ typedef enum AsyncSocketError AsyncSocketError;
 - (void)readDataWithTimeout:(NSTimeInterval)timeout tag:(long)tag;
 
 /* Writes data to the socket, and calls the delegate when finished.
- * 
+ *
  * If you pass in nil or zero-length data, this method does nothing and the delegate will not be called.
 **/
 - (void)writeData:(NSData *)data withTimeout:(NSTimeInterval)timeout tag:(long)tag;
@@ -245,9 +245,9 @@ typedef enum AsyncSocketError AsyncSocketError;
  * store any overflow in a small internal buffer.
  * This is termed pre-buffering, as some data may be read for you before you ask for it.
  * If you use readDataToData a lot, enabling pre-buffering may offer a small performance improvement.
- * 
+ *
  * Pre-buffering is disabled by default. You must explicitly enable it to turn it on.
- * 
+ *
  * Note: If your protocol negotiates upgrades to TLS (as opposed to using TLS from the start), you should
  * consider how, if at all, pre-buffering could affect the TLS negotiation sequence.
  * This is because TLS runs atop TCP, and requires sending/receiving a TLS handshake over the TCP socket.

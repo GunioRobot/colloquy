@@ -1,24 +1,24 @@
 //============================================================================
-// 
+//
 //     License:
-// 
+//
 //     This library is free software; you can redistribute it and/or
 //     modify it under the terms of the GNU Lesser General Public
 //     License as published by the Free Software Foundation; either
 //     version 2.1 of the License, or (at your option) any later version.
-// 
+//
 //     This library is distributed in the hope that it will be useful,
 //     but WITHOUT ANY WARRANTY; without even the implied warranty of
 //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //     Lesser General Public License for more details.
-// 
+//
 //     You should have received a copy of the GNU Lesser General Public
 //     License along with this library; if not, write to the Free Software
-//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
 //     USA
-// 
+//
 //     Copyright (C) 2002 Dave Smith (dizzyd@jabber.org)
-// 
+//
 // $Id: esession.c,v 1.1 2004/07/19 03:49:04 jtownsend Exp $
 //============================================================================
 
@@ -30,8 +30,8 @@
 #include "buffer.h"
 #include <string.h>
 
-/* 
- * Internal module variables 
+/*
+ * Internal module variables
  */
 
 /* Error and state info */
@@ -66,8 +66,8 @@ static void _make_key(BUF_MEM K, char id, Buffer* sid,
     EVP_DigestFinal(&ctx, keybuf, keybuf_len);
 }
 
-static void _setup_cipher(int encrypt_flag, ESessionCipherAlgo algo, 
-                          BUF_MEM K, Buffer* sid, char IV_id, 
+static void _setup_cipher(int encrypt_flag, ESessionCipherAlgo algo,
+                          BUF_MEM K, Buffer* sid, char IV_id,
                           char Enc_id, EVP_CIPHER_CTX* result)
 {
     unsigned char ivbuf[EVP_MAX_MD_SIZE];
@@ -146,15 +146,15 @@ static char* _key_hex_fingerprint(Buffer* rawkeybuf)
 
     /* Turn it into something meaningful... */
     result = (char*)calloc(1, (keydigest_len * 3) + 1);
- 
+
     for(i = 0; i < keydigest_len; i++)
     {
-        snprintf(result + (i*4), 4, "%02x:", keydigest[i]);        
+        snprintf(result + (i*4), 4, "%02x:", keydigest[i]);
     }
     return result;
 }
 
-static EVP_PKEY* _process_public_key(const char* id, ESessionKeyType keytype, 
+static EVP_PKEY* _process_public_key(const char* id, ESessionKeyType keytype,
                                      const char* keystr)
 {
     Buffer rawkeybuf;
@@ -162,7 +162,7 @@ static EVP_PKEY* _process_public_key(const char* id, ESessionKeyType keytype,
     char* fingerprint;
     const char* cached_fingerprint;
     ESessionCBResult cb_result;
-    
+
     /* First of all, base64 decode this keystring */
     buffer_init_from_base64(&rawkeybuf, (unsigned char *)keystr);
 
@@ -178,7 +178,7 @@ static EVP_PKEY* _process_public_key(const char* id, ESessionKeyType keytype,
         if (strcmp(fingerprint, cached_fingerprint) != 0)
         {
             /* Something changed -- notify the caller */
-            cb_result = (*_changedkey_cb)(keytype, id, cached_fingerprint, 
+            cb_result = (*_changedkey_cb)(keytype, id, cached_fingerprint,
                                           fingerprint, _changedkey_cb_arg);
 
             /* Caller said that a changed key is ok -- update
@@ -223,7 +223,7 @@ static EVP_PKEY* _process_public_key(const char* id, ESessionKeyType keytype,
         RSA* rkey = RSA_new();
         buffer_get_bignum2(&rawkeybuf, rkey->e);
         buffer_get_bignum2(&rawkeybuf, rkey->n);
-        EVP_PKEY_assign_RSA(result, rkey);        
+        EVP_PKEY_assign_RSA(result, rkey);
     }
     else
     {
@@ -239,11 +239,11 @@ static EVP_PKEY* _process_public_key(const char* id, ESessionKeyType keytype,
     free(fingerprint);
 
     return result;
-}    
+}
 
-/* 
- * 
- * Global ESession functions 
+/*
+ *
+ * Global ESession functions
  *
  */
 
@@ -282,7 +282,7 @@ const char* es_add_personal_key(const char* private_key)
     membio = BIO_new_mem_buf((char*)private_key, strlen(private_key));
 
     /* Read the result into the key structure */
-    key = PEM_read_bio_PrivateKey(membio, NULL, _es_get_password, 
+    key = PEM_read_bio_PrivateKey(membio, NULL, _es_get_password,
                                   (void*)private_key);
 
     /* Check for errors */
@@ -299,7 +299,7 @@ const char* es_add_personal_key(const char* private_key)
     {
         keytype = ES_KEY_RSA;
         buffer_put_bignum2(&b, key->pkey.rsa->e);
-        buffer_put_bignum2(&b, key->pkey.rsa->n);        
+        buffer_put_bignum2(&b, key->pkey.rsa->n);
     }
     else if (EVP_PKEY_type(key->type) == EVP_PKEY_DSA)
     {
@@ -350,7 +350,7 @@ const char* es_add_public_key(const char* id, ESessionKeyType keytype, const cha
 
     /* Cleanup */
     free(fingerprint);
-    
+
     return result;
 }
 
@@ -427,7 +427,7 @@ ESessionKeyPair es_generate_keypair(ESessionKeyType keytype, int bits,
         buffer_put_bignum2(&b, dkey->pub_key);
         result->public_key = (char *)buffer_base64_encode(&b);
         buffer_free(&b);
-        
+
         /* Store the resulting key into a EVP_PKEY struct */
         EVP_PKEY_assign_DSA(evpkey, dkey);
     }
@@ -537,7 +537,7 @@ ESessionHandshake esession_handshake_load(ESession es, const char* e_str, ESessi
     EVP_MD_CTX signctx;
     char* sig = NULL;
     unsigned int   sig_len;
-   
+
 
     /* Ensure state is good */
     assert(es->_state == ES_NEW);
@@ -571,7 +571,7 @@ ESessionHandshake esession_handshake_load(ESession es, const char* e_str, ESessi
     }
 
 
-    /* Step 2.7: Calculate K by completing the DH handshake */    
+    /* Step 2.7: Calculate K by completing the DH handshake */
     K.length = DH_size(es->_dh);
     K.data = malloc(K.length);
     rc = DH_compute_key((unsigned char *)K.data, e, es->_dh);
@@ -603,7 +603,7 @@ ESessionHandshake esession_handshake_load(ESession es, const char* e_str, ESessi
     result->sig = b64_encode(sig, sig_len);
     free(sig);
 
-    
+
     /* Setup inbound (Alice -> Bob) cipher & MAC key*/
     _setup_cipher(0, es->_cipherAlgo, K, &sid, 'A', 'C',
                   &(es->_cipher_in));
@@ -613,7 +613,7 @@ ESessionHandshake esession_handshake_load(ESession es, const char* e_str, ESessi
 
     /* Setup outbound (Bob -> Alice) cipher & MAC key*/
     _setup_cipher(1, es->_cipherAlgo, K, &sid, 'B', 'D',
-                  &(es->_cipher_out));    
+                  &(es->_cipher_out));
     _make_key(K, 'F', &sid, es->_mac_key_in, NULL);
     es->_counter_out = 0;
 
@@ -623,7 +623,7 @@ ESessionHandshake esession_handshake_load(ESession es, const char* e_str, ESessi
     DH_free(es->_dh);
     es->_dh = NULL;
     buffer_free(&sid);
-    
+
     /* Move into new state */
     es->_state = ES_READY;
 
@@ -634,7 +634,7 @@ int esession_handshake_complete(ESession es, const char* f_str,
                                 const char* sig_str, const char* key_str)
 {
     BIGNUM* e;
-    BIGNUM* f = NULL;    
+    BIGNUM* f = NULL;
     BUF_MEM K;
     EVP_MD_CTX verifyctx;
     EVP_PKEY* bobkey;
@@ -642,11 +642,11 @@ int esession_handshake_complete(ESession es, const char* f_str,
     int   sig_len;
     int   rc;
     Buffer sid;
-    
+
     /* Ensure state is good */
     assert(es->_state == ES_HANDSHAKE);
 
-    
+
     /* For clarity, alias es->_dh->pub_key to "e" */
     e = es->_dh->pub_key;
 
@@ -721,7 +721,7 @@ ESessionMessage esession_encrypt(ESession es, const char* message)
     return NULL;
 }
 
-ESessionMessage esession_decrypt(ESession es, const char* message, 
+ESessionMessage esession_decrypt(ESession es, const char* message,
                                  const char* mac)
 {
     return NULL;

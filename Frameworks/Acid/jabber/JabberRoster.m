@@ -1,25 +1,25 @@
 //============================================================================
-// 
+//
 //     License:
-// 
+//
 //     This library is free software; you can redistribute it and/or
 //     modify it under the terms of the GNU Lesser General Public
 //     License as published by the Free Software Foundation; either
 //     version 2.1 of the License, or (at your option) any later version.
-// 
+//
 //     This library is distributed in the hope that it will be useful,
 //     but WITHOUT ANY WARRANTY; without even the implied warranty of
 //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //     Lesser General Public License for more details.
-// 
+//
 //     You should have received a copy of the GNU Lesser General Public
 //     License along with this library; if not, write to the Free Software
-//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
 //     USA
-// 
+//
 //     Copyright (C) 2002-2003 Dave Smith (dizzyd@jabber.org)
 //     Copyright (C) 2002 David Waite (mass@akuma.org)
-// 
+//
 // $Id: JabberRoster.m,v 1.5 2005/05/05 05:11:55 gbooker Exp $
 //============================================================================
 
@@ -124,7 +124,7 @@ NSString* XP_ROSTERPUSH = @"/iq[@type='set']/query[%jabber:iq:roster]";
     // Shortcut out if there are no groups
     if ([groups count] == 0)
     {
-        // Notify delegate that all old groups (if any) are 
+        // Notify delegate that all old groups (if any) are
         // getting deleted
         e = [_groups objectEnumerator];
         while ((cur = [e nextObject]))
@@ -285,7 +285,7 @@ NSString* XP_ROSTERPUSH = @"/iq[@type='set']/query[%jabber:iq:roster]";
     JabberPresence* pres = [n object];
     JRItem* item = [_items objectForKey:[[pres from] userhostJID]];
 
-    JabberPresence* default_presence = 
+    JabberPresence* default_presence =
 	[[_session presenceTracker] defaultPresenceForJID:[pres from]];
     [item setDefaultPresence:default_presence];
 }
@@ -338,7 +338,7 @@ NSString* XP_ROSTERPUSH = @"/iq[@type='set']/query[%jabber:iq:roster]";
     JabberIQ *iq;
     XMLElement *item;
     NSEnumerator *e;
-    
+
     // Construct IQ to do roster set
     iq = [JabberIQ constructIQSet:@"jabber:iq:roster" withSession:_session];
 

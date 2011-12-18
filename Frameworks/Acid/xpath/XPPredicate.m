@@ -1,24 +1,24 @@
 //============================================================================
-// 
+//
 //     License:
-// 
+//
 //     This library is free software; you can redistribute it and/or
 //     modify it under the terms of the GNU Lesser General Public
 //     License as published by the Free Software Foundation; either
 //     version 2.1 of the License, or (at your option) any later version.
-// 
+//
 //     This library is distributed in the hope that it will be useful,
 //     but WITHOUT ANY WARRANTY; without even the implied warranty of
 //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //     Lesser General Public License for more details.
-// 
+//
 //     You should have received a copy of the GNU Lesser General Public
 //     License along with this library; if not, write to the Free Software
-//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
 //     USA
-// 
+//
 //     Copyright (C) 2002 Dave Smith (dizzyd@jabber.org)
-// 
+//
 // $Id: XPPredicate.m,v 1.2 2004/10/16 21:40:05 gbooker Exp $
 //============================================================================
 
@@ -29,7 +29,7 @@
 // ---------------------------
 @interface XP_AttrValue : XPPredicate
 {
-    NSString* _name; 
+    NSString* _name;
     NSString* _value;
     BOOL      _invert;
     BOOL      _wildcard;
@@ -266,7 +266,7 @@
         // Move to next index if userhostOnly; thus skipping second $
         if (userhostOnly)
             index++;
-        
+
         // Attribute exists or attribute value
         [pathtoken deleteCharactersFromIndex:0 toIndex:index+1];
         token = [pathtoken nextTokenDelimitedBy:@"="];

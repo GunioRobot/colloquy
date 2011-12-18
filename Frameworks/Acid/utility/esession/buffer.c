@@ -64,7 +64,7 @@ buffer_init(Buffer *buffer)
     buffer->end = 0;
 }
 
-void 
+void
 buffer_init_with_size(Buffer* buffer, u_int len)
 {
     buffer->alloc = len;
@@ -73,7 +73,7 @@ buffer_init_with_size(Buffer* buffer, u_int len)
     buffer->end = 0;
 }
 
-void     
+void
 buffer_init_with_data(Buffer* buffer, u_char* data, u_int data_len)
 {
     buffer->alloc = data_len;

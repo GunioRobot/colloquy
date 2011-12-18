@@ -1,24 +1,24 @@
 //============================================================================
-// 
+//
 //     License:
-// 
+//
 //     This library is free software; you can redistribute it and/or
 //     modify it under the terms of the GNU Lesser General Public
 //     License as published by the Free Software Foundation; either
 //     version 2.1 of the License, or (at your option) any later version.
-// 
+//
 //     This library is distributed in the hope that it will be useful,
 //     but WITHOUT ANY WARRANTY; without even the implied warranty of
 //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //     Lesser General Public License for more details.
-// 
+//
 //     You should have received a copy of the GNU Lesser General Public
 //     License along with this library; if not, write to the Free Software
-//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
 //     USA
-// 
+//
 //     Copyright (C) 2002 Dave Smith (dizzyd@jabber.org)
-// 
+//
 // $Id: XMLCData.m,v 1.5 2004/12/31 20:55:12 alangh Exp $
 //============================================================================
 #import "acid-dom.h"
@@ -43,11 +43,11 @@
 -(id) initWithString:(NSString*)s  // Assumes unescaped data
 {
     [self init];
-    _text = [[NSMutableString alloc] initWithString:s];    
+    _text = [[NSMutableString alloc] initWithString:s];
     return self;
 }
 
- 
+
 -(id) initWithCharPtr:(const char*)cptr ofLength:(unsigned)clen  // Assumes unescaped data
 {
     [self init];
@@ -212,7 +212,7 @@
     }
     temp[j] = '\0';
 
-    result = [[NSString alloc] initWithUTF8StringNoCopy:temp 
+    result = [[NSString alloc] initWithUTF8StringNoCopy:temp
                                length:newlen
                                freeWhenDone:TRUE];
 
@@ -229,7 +229,7 @@
 
     if (data == nil)
         return nil;
-        
+
     cdata = [data UTF8String];
     newlen = oldlen = strlen(cdata);
     for (i = 0; i < oldlen; ++i)
@@ -294,7 +294,7 @@
     }
     temp[j] = '\0';
 
-    result = [[NSString alloc] initWithUTF8StringNoCopy:temp 
+    result = [[NSString alloc] initWithUTF8StringNoCopy:temp
                                length:newlen
                                freeWhenDone:TRUE];
 
@@ -313,9 +313,9 @@
 
     // This costs an extra scan, but considering how many function
     // calls this would avoid, I suspect it would be worth it
-    if (strchr(data,'&') == NULL) 
+    if (strchr(data,'&') == NULL)
     {
-        result = [[NSMutableString alloc] initWithUTF8String:data 
+        result = [[NSMutableString alloc] initWithUTF8String:data
                                           length:datasz];
         [result autorelease];
         return result;

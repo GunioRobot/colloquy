@@ -12,7 +12,7 @@
 @interface KAEdge : NSObject {
 	KANode  *_startNode;
 	KANode  *_endNode;
-	
+
 	double  _weight;
 }
 

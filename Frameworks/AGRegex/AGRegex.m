@@ -320,7 +320,7 @@ static AGRegex *backrefPattern;
 	NSRange remainRange, matchRange;
 	int i, j, count, allCount, length = [str length];
 	// find all matches
-	allMatches = [self findAllInString:str]; 
+	allMatches = [self findAllInString:str];
 	allCount = [allMatches count];
 	remainRange = NSMakeRange(0, length);
 	// while limit is not reached and there are more matches

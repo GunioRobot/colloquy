@@ -4,7 +4,7 @@ var ElementUtilities = {
 
 		var parent = element.parentNode;
 		while( ! $(parent).hasClassName( className ) ) {
-			if( parent == element.ownerDocument ) 
+			if( parent == element.ownerDocument )
 				return null;
 			parent = parent.parentNode;
 		}
@@ -14,8 +14,8 @@ var ElementUtilities = {
 
 	removeChildren: function( element ){
 		element = $(element);
-		while( element.firstChild ) 
-			element.removeChild( element.firstChild );        
+		while( element.firstChild )
+			element.removeChild( element.firstChild );
 	}
 }
 

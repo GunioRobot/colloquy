@@ -29,9 +29,9 @@
 
 /\x{0041}\x{2262}\x{0391}\x{002e}/D8
     \x{0041}\x{2262}\x{0391}\x{002e}
-    
-/\x{D55c}\x{ad6d}\x{C5B4}/D8 
-    \x{D55c}\x{ad6d}\x{C5B4} 
+
+/\x{D55c}\x{ad6d}\x{C5B4}/D8
+    \x{D55c}\x{ad6d}\x{C5B4}
 
 /\x{65e5}\x{672c}\x{8a9e}/D8
     \x{65e5}\x{672c}\x{8a9e}
@@ -59,57 +59,57 @@
 
 /^[a\x{c0}]b/8
     \x{c0}b
-    
-/^([a\x{c0}]*?)aa/8
-    a\x{c0}aaaa/ 
 
 /^([a\x{c0}]*?)aa/8
-    a\x{c0}aaaa/ 
-    a\x{c0}a\x{c0}aaa/ 
+    a\x{c0}aaaa/
+
+/^([a\x{c0}]*?)aa/8
+    a\x{c0}aaaa/
+    a\x{c0}a\x{c0}aaa/
 
 /^([a\x{c0}]*)aa/8
-    a\x{c0}aaaa/ 
-    a\x{c0}a\x{c0}aaa/ 
+    a\x{c0}aaaa/
+    a\x{c0}a\x{c0}aaa/
 
 /^([a\x{c0}]*)a\x{c0}/8
-    a\x{c0}aaaa/ 
-    a\x{c0}a\x{c0}aaa/ 
-    
-/-- --/ 
-    
+    a\x{c0}aaaa/
+    a\x{c0}a\x{c0}aaa/
+
+/-- --/
+
 /(?<=\C)X/8
     Should produce an error diagnostic
-    
+
 /-- This one is here not because it's different to Perl, but because the --/
 /-- way the captured single-byte is displayed. (In Perl it becomes a --/
 /-- character, and you can't tell the difference.) --/
-    
+
 /X(\C)(.*)/8
     X\x{1234}
-    X\nabc 
-    
+    X\nabc
+
 /^[ab]/8D
     bar
     *** Failers
     c
     \x{ff}
-    \x{100}  
+    \x{100}
 
 /^[^ab]/8D
     c
     \x{ff}
-    \x{100}  
-    *** Failers 
+    \x{100}
+    *** Failers
     aaa
-  
+
 /[^ab\xC0-\xF0]/8SD
     \x{f1}
     \x{bf}
     \x{100}
-    \x{1000}   
+    \x{1000}
     *** Failers
-    \x{c0} 
-    \x{f0} 
+    \x{c0}
+    \x{f0}
 
 /Ā{3,4}/8SD
   \x{100}\x{100}\x{100}\x{100\x{100}
@@ -124,12 +124,12 @@
 
 /\x{100}*(\d+|"(?1)")/8
     1234
-    "1234" 
+    "1234"
     \x{100}1234
-    "\x{100}1234"  
-    \x{100}\x{100}12ab 
-    \x{100}\x{100}"12" 
-    *** Failers 
+    "\x{100}1234"
+    \x{100}\x{100}12ab
+    \x{100}\x{100}"12"
+    *** Failers
     \x{100}\x{100}abcd
 
 /\x{100}/8D
@@ -157,13 +157,13 @@
     \x{100}
     Z\x{100}
     \x{100}Z
-    *** Failers 
+    *** Failers
 
 /[Z\x{100}]/8DM
     Z\x{100}
     \x{100}
     \x{100}Z
-    *** Failers 
+    *** Failers
 
 /[\x{200}-\x{100}]/8
 
@@ -172,13 +172,13 @@
     \x{104}
     *** Failers
     \x{105}
-    \x{ff}    
+    \x{ff}
 
 /[z-\x{100}]/8D
 
 /[z\Qa-d]Ā\E]/8D
     \x{100}
-    Ā 
+    Ā
 
 /[\xFF]/D
     >\xff<
@@ -193,18 +193,18 @@
 /[Ä-Ü]/8
     Ö # Matches without Study
     \x{d6}
-    
+
 /[Ä-Ü]/8S
     Ö <-- Same with Study
     \x{d6}
-    
-/[\x{c4}-\x{dc}]/8 
+
+/[\x{c4}-\x{dc}]/8
     Ö # Matches without Study
-    \x{d6} 
+    \x{d6}
 
 /[\x{c4}-\x{dc}]/8S
     Ö <-- Same with Study
-    \x{d6} 
+    \x{d6}
 
 /[�]/8
 
@@ -222,20 +222,20 @@
 
 /anything/8
     \xc0\x80
-    \xc1\x8f 
+    \xc1\x8f
     \xe0\x9f\x80
-    \xf0\x8f\x80\x80 
-    \xf8\x87\x80\x80\x80  
+    \xf0\x8f\x80\x80
+    \xf8\x87\x80\x80\x80
     \xfc\x83\x80\x80\x80\x80
-    \xfe\x80\x80\x80\x80\x80  
-    \xff\x80\x80\x80\x80\x80  
+    \xfe\x80\x80\x80\x80\x80
+    \xff\x80\x80\x80\x80\x80
     \xc3\x8f
     \xe0\xaf\x80
     \xe1\x80\x80
-    \xf0\x9f\x80\x80 
-    \xf1\x8f\x80\x80 
-    \xf8\x88\x80\x80\x80  
-    \xf9\x87\x80\x80\x80  
+    \xf0\x9f\x80\x80
+    \xf1\x8f\x80\x80
+    \xf8\x88\x80\x80\x80
+    \xf9\x87\x80\x80\x80
     \xfc\x84\x80\x80\x80\x80
     \xfd\x83\x80\x80\x80\x80
 
@@ -255,10 +255,10 @@
 
 /\W/8
     A.B
-    A\x{100}B 
-  
+    A\x{100}B
+
 /\w/8
-    \x{100}X   
+    \x{100}X
 
 /a\x{1234}b/P8
     a\x{1234}b
@@ -269,6 +269,6 @@
 
 /\777/8I
   \x{1ff}
-  \777 
+  \777
 
 / End of testinput5 /

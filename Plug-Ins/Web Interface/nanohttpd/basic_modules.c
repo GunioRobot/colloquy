@@ -25,7 +25,7 @@ void mod_dir( http_req_t *req, http_resp_t *resp, http_server_t *server ) {
 		resp -> status_code = 500;
 		resp -> reason_phrase = "No document root defined";
 		resp -> printf( resp, "500: No document root defined" );
-		return;	
+		return;
 	}
 
 	char filename[1024];
@@ -95,7 +95,7 @@ void mod_file( http_req_t *req, http_resp_t *resp, http_server_t *server ) {
 		resp -> status_code = 500;
 		resp -> reason_phrase = "No document root defined";
 		resp -> printf( resp, "500: No document root defined" );
-		return;	
+		return;
 	}
 
 	char filename[1024];
@@ -125,7 +125,7 @@ void mod_file( http_req_t *req, http_resp_t *resp, http_server_t *server ) {
 	}
 
 	if( S_ISDIR( sb.st_mode ) ) {
-		snprintf( filename, 1024, "%s/", req -> file_name );		
+		snprintf( filename, 1024, "%s/", req -> file_name );
 		resp -> send_redirect( resp, filename );
 		return;
 	}

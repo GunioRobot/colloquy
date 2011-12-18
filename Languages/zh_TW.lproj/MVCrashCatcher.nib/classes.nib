@@ -1,18 +1,18 @@
 {
     IBClasses = (
-        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; },
         {
-            ACTIONS = {dontSend = id; sendCrashLog = id; }; 
-            CLASS = MVCrashCatcher; 
-            LANGUAGE = ObjC; 
+            ACTIONS = {dontSend = id; sendCrashLog = id; };
+            CLASS = MVCrashCatcher;
+            LANGUAGE = ObjC;
             OUTLETS = {
-                comments = NSTextView; 
-                description = NSTextField; 
-                log = NSTextView; 
-                window = NSWindow; 
-            }; 
-            SUPERCLASS = NSObject; 
+                comments = NSTextView;
+                description = NSTextField;
+                log = NSTextView;
+                window = NSWindow;
+            };
+            SUPERCLASS = NSObject;
         }
-    ); 
-    IBVersion = 1; 
+    );
+    IBVersion = 1;
 }

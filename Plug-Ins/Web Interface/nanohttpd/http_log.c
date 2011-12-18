@@ -33,7 +33,7 @@ void http_log( int level, const char *fmt, ... ) {
 
 	printf( "%s", lmsg );
 	vprintf( fmt, ap );
-	printf( "\n" );	
+	printf( "\n" );
 	va_end( ap );
 }
 

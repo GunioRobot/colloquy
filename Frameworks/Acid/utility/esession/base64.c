@@ -151,7 +151,7 @@ static int ap_base64decode_binary(unsigned char *bufplain,
 int ap_base64decode(char *bufplain, const char *bufcoded)
 {
     int len;
-    
+
     len = ap_base64decode_binary((unsigned char *) bufplain, bufcoded);
     bufplain[len] = '\0';
     return len;
@@ -234,6 +234,6 @@ void b64_decode(const char* data, char* result, int* result_len)
 {
     *result_len = ap_base64decode_len(data);
     result = (char*)malloc(*result_len + 1);
-    
+
     ap_base64decode(result, data);
 }

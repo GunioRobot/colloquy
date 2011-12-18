@@ -1,24 +1,24 @@
 //============================================================================
-// 
+//
 //     License:
-// 
+//
 //     This library is free software; you can redistribute it and/or
 //     modify it under the terms of the GNU Lesser General Public
 //     License as published by the Free Software Foundation; either
 //     version 2.1 of the License, or (at your option) any later version.
-// 
+//
 //     This library is distributed in the hope that it will be useful,
 //     but WITHOUT ANY WARRANTY; without even the implied warranty of
 //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //     Lesser General Public License for more details.
-// 
+//
 //     You should have received a copy of the GNU Lesser General Public
 //     License along with this library; if not, write to the Free Software
-//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
 //     USA
-// 
+//
 //     Copyright (C) 2002 Dave Smith (dizzyd@jabber.org)
-// 
+//
 // $Id: XPLocation.m,v 1.2 2004/10/03 11:09:07 jtownsend Exp $
 //============================================================================
 
@@ -81,8 +81,8 @@
     {
         // If the string's length is now 0, stop tokenizing
         if ([pathtokens length] == 0)
-            break;	
-        
+            break;
+
         // Determine what delimiter stopped the tokenizer and act
         // accordingly
         switch([pathtokens characterAtIndex:0])
@@ -116,7 +116,7 @@
     return self;
 }
 
--(BOOL) matches:(XMLElement*)elem 
+-(BOOL) matches:(XMLElement*)elem
 {
     // Check predicates (includes base name)
     if (![self checkPredicates:elem])
@@ -146,7 +146,7 @@
             [result appendString:[elem getAttribute:_attributeName]];
             return;
         }
-        
+
         // If there is another expression, pass the call on..
         if (_next != nil)
         {
@@ -158,7 +158,7 @@
             }
         }
         // Otherwise, this is the "terminal" location and we extract
-        // CData from the element 
+        // CData from the element
         else
         {
             NSString* cdata = [elem cdata];
@@ -170,7 +170,7 @@
 
 -(void) queryForList:(XMLElement*)elem withResultArray:(NSMutableArray*)result
 {
-    
+
    // Check element base name and predicates
     if ([self checkPredicates:elem])
     {
@@ -180,7 +180,7 @@
                 [result addObject:elem];
             return;
         }
-        
+
         // If there is another expression, pass the call on..
         if (_next != nil)
         {
@@ -212,7 +212,7 @@
                 [result addObject:elem];
             return;
         }
-        
+
         // If there is another expression, pass the call on..
         if (_next != nil)
         {
@@ -231,7 +231,7 @@
             if (c != nil)
                 [result addObject:c];
         }
-    }    
+    }
 }
 
 -(BOOL) checkPredicates:(XMLElement*)elem

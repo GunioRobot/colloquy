@@ -1,24 +1,24 @@
 //============================================================================
-// 
+//
 //     License:
-// 
+//
 //     This library is free software; you can redistribute it and/or
 //     modify it under the terms of the GNU Lesser General Public
 //     License as published by the Free Software Foundation; either
 //     version 2.1 of the License, or (at your option) any later version.
-// 
+//
 //     This library is distributed in the hope that it will be useful,
 //     but WITHOUT ANY WARRANTY; without even the implied warranty of
 //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //     Lesser General Public License for more details.
-// 
+//
 //     You should have received a copy of the GNU Lesser General Public
 //     License along with this library; if not, write to the Free Software
-//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
 //     USA
-// 
+//
 //     Copyright (C) 2002-2003 Dave Smith (dizzyd@jabber.org)
-// 
+//
 // $Id: JabberStdAuthManager.m,v 1.2 2005/04/29 18:44:44 gbooker Exp $
 //============================================================================
 
@@ -36,7 +36,7 @@ NSString* DFMT = @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%
     // Save JID and session info
     _jid = [jid retain];
     _session = session;
-    
+
     // Build an auth query
     auth_query = [JabberIQ constructIQGet:@"jabber:iq:auth" withSession:_session];
     [auth_query setObserver:self withSelector:@selector(onIQAuthGet:)];
@@ -44,7 +44,7 @@ NSString* DFMT = @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%
 
     // Execute auth query
     [auth_query execute];
-    
+
 }
 
 

@@ -82,7 +82,7 @@
     \O3abcb
     \O6abcb
     \O9abcb
-    \O12abcb 
+    \O12abcb
 
 /(a)bc|(a)(b)\2/
     abc
@@ -126,7 +126,7 @@
 /abc/P
     abc
     *** Failers
-    
+
 /^abc|def/P
     abcdef
     abcdef\B
@@ -134,23 +134,23 @@
 /.*((abc)$|(def))/P
     defabc
     \Zdefabc
-  
+
 /the quick brown fox/P
     the quick brown fox
-    *** Failers 
-    The Quick Brown Fox 
+    *** Failers
+    The Quick Brown Fox
 
 /the quick brown fox/Pi
     the quick brown fox
-    The Quick Brown Fox 
+    The Quick Brown Fox
 
 /abc.def/P
     *** Failers
     abc\ndef
-    
+
 /abc$/P
     abc
-    abc\n 
+    abc\n
 
 /(abc)\2/P
 
@@ -162,8 +162,8 @@
 /a[]b/
 
 /[^aeiou ]{3,}/
-    co-processors, and for 
-    
+    co-processors, and for
+
 /<.*>/
     abc<def>ghi<klm>nop
 
@@ -172,25 +172,25 @@
 
 /<.*>/U
     abc<def>ghi<klm>nop
-    
+
 /(?U)<.*>/
     abc<def>ghi<klm>nop
 
 /<.*?>/U
     abc<def>ghi<klm>nop
-    
+
 /={3,}/U
     abc========def
-    
+
 /(?U)={3,}?/
     abc========def
-    
+
 /(?<!bar|cattle)foo/
     foo
-    catfoo 
+    catfoo
     *** Failers
     the barfoo
-    and cattlefoo   
+    and cattlefoo
 
 /(?<=a+)b/
 
@@ -241,20 +241,20 @@
 /a$/
     a
     a\n
-    *** Failers 
+    *** Failers
     \Za
-    \Za\n   
+    \Za\n
 
 /a$/m
     a
     a\n
-    \Za\n   
-    *** Failers 
+    \Za\n
+    *** Failers
     \Za
-    
+
 /\Aabc/m
 
-/^abc/m 
+/^abc/m
 
 /^((a+)(?U)([ab]+)(?-U)([bc]+)(\w*))/
   aaaaabbbbbcccccdef
@@ -266,24 +266,24 @@
 /(?!alphabet)[ab]/S
 
 /(?<=foo\n)^bar/m
-    foo\nbarbar 
+    foo\nbarbar
     ***Failers
-    rhubarb 
+    rhubarb
     barbell
-    abc\nbarton 
+    abc\nbarton
 
 /^(?<=foo\n)bar/m
-    foo\nbarbar 
+    foo\nbarbar
     ***Failers
-    rhubarb 
+    rhubarb
     barbell
-    abc\nbarton 
+    abc\nbarton
 
 /(?>^abc)/m
     abc
     def\nabc
     *** Failers
-    defabc   
+    defabc
 
 /(?<=ab(c+)d)ef/
 
@@ -298,8 +298,8 @@
     a donkey-cart race
     *** Failers
     cart
-    horse-and-cart    
-      
+    horse-and-cart
+
 /(?<=ab(?i)x|y|z)/
 
 /(?>.*)(?<=(abcd)|(xyz))/
@@ -312,30 +312,30 @@
     ZZZ
     zZZ
     bZZ
-    BZZ     
+    BZZ
     *** Failers
-    ZZ 
-    abXYZZ 
+    ZZ
+    abXYZZ
     zzz
-    bzz  
+    bzz
 
 /(?<!(foo)a)bar/
     bar
-    foobbar 
+    foobbar
     *** Failers
-    fooabar  
+    fooabar
 
 /This one is here because Perl 5.005_02 doesn't fail it/
 
 /^(a)?(?(1)a|b)+$/
     *** Failers
-    a 
+    a
 
 /This one is here because I think Perl 5.005_02 gets the setting of $1 wrong/
 
 /^(a\1?){4}$/
     aaaaaa
-    
+
 /These are syntax tests from Perl 5.005/
 
 /a[b-a]/
@@ -414,12 +414,12 @@
     abcd
     abcd\C2
     abcd\C5
-     
+
 /(.{20})/
     abcdefghijklmnopqrstuvwxyz
     abcdefghijklmnopqrstuvwxyz\C1
     abcdefghijklmnopqrstuvwxyz\G1
-     
+
 /(.{15})/
     abcdefghijklmnopqrstuvwxyz
     abcdefghijklmnopqrstuvwxyz\C1\G1
@@ -427,17 +427,17 @@
 /(.{16})/
     abcdefghijklmnopqrstuvwxyz
     abcdefghijklmnopqrstuvwxyz\C1\G1\L
-    
+
 /^(a|(bc))de(f)/
-    adef\G1\G2\G3\G4\L 
-    bcdef\G1\G2\G3\G4\L 
-    adefghijk\C0 
-    
+    adef\G1\G2\G3\G4\L
+    bcdef\G1\G2\G3\G4\L
+    adefghijk\C0
+
 /^abc\00def/
-    abc\00def\L\C0 
-    
-/word ((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+ 
-)((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+ 
+    abc\00def\L\C0
+
+/word ((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+
+)((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+
 )?)?)?)?)?)?)?)?)?otherword/M
 
 /.*X/D
@@ -447,7 +447,7 @@
 /(.*X|^B)/D
 
 /(.*X|^B)/Ds
-    
+
 /(?s)(.*X|^B)/D
 
 /(?s:.*X|^B)/D
@@ -477,15 +477,15 @@
 
 /^iss/g+
     ississippi
-    
+
 /.*iss/g+
-    abciss\nxyzisspqr 
+    abciss\nxyzisspqr
 
 /.i./+g
     Mississippi
     Mississippi\A
     Missouri river
-    Missouri river\A  
+    Missouri river\A
 
 /^.is/+g
     Mississippi
@@ -584,14 +584,14 @@
     ab
     \
     *** Failers
-    \N     
-    
+    \N
+
 /|-/
     abcd
     -abc
     \Nab-c
     *** Failers
-    \Nabc     
+    \Nabc
 
 /a*(b+)(z)(z)/P
     aaaabbbbzzzz
@@ -601,8 +601,8 @@
     aaaabbbbzzzz\O3
     aaaabbbbzzzz\O4
     aaaabbbbzzzz\O5
-    
-/^.?abcd/S 
+
+/^.?abcd/S
 
 /\(             # ( at start
   (?:           # Non-capturing bracket
@@ -615,26 +615,26 @@
     (abcd)
     (abcd)xyz
     xyz(abcd)
-    (ab(xy)cd)pqr 
-    (ab(xycd)pqr 
-    () abc () 
+    (ab(xy)cd)pqr
+    (ab(xycd)pqr
+    () abc ()
     12(abcde(fsh)xyz(foo(bar))lmno)89
     *** Failers
-    abcd 
+    abcd
     abcd)
-    (abcd  
+    (abcd
 
 /\(  ( (?>[^()]+) | (?R) )* \) /xg
-    (ab(xy)cd)pqr 
+    (ab(xy)cd)pqr
     1(abcd)(x(y)z)pqr
 
 /\(  (?: (?>[^()]+) | (?R) ) \) /x
     (abcd)
     (ab(xy)cd)
-    (a(b(c)d)e) 
-    ((ab)) 
+    (a(b(c)d)e)
+    ((ab))
     *** Failers
-    ()   
+    ()
 
 /\(  (?: (?>[^()]+) | (?R) )? \) /x
     ()
@@ -671,7 +671,7 @@
 /^[[:alpha:]]/D
 
 /^[[:^alpha:]]/D
-             
+
 /[_[:alpha:]]/IS
 
 /^[[:ascii:]]/D
@@ -720,18 +720,18 @@
 
 /[[:upper:]]/i
     A
-    a 
-    
+    a
+
 /[[:lower:]]/i
     A
-    a 
+    a
 
 /((?-i)[[:lower:]])[[:lower:]]/i
     ab
     aB
     *** Failers
     Ab
-    AB        
+    AB
 
 /[\200-\110]/
 
@@ -747,53 +747,53 @@
 /(main(O)?)+/
     mainmain
     mainOmain
-    
+
 /These are all cases where Perl does it differently (nested captures)/
 
 /^(a(b)?)+$/
     aba
-   
+
 /^(aa(bb)?)+$/
-    aabbaa    
-    
+    aabbaa
+
 /^(aa|aa(bb))+$/
-    aabbaa 
-    
+    aabbaa
+
 /^(aa(bb)??)+$/
-    aabbaa    
-    
+    aabbaa
+
 /^(?:aa(bb)?)+$/
-    aabbaa    
-    
+    aabbaa
+
 /^(aa(b(b))?)+$/
-    aabbaa    
+    aabbaa
 
 /^(?:aa(b(b))?)+$/
-    aabbaa    
+    aabbaa
 
 /^(?:aa(b(?:b))?)+$/
-    aabbaa    
+    aabbaa
 
 /^(?:aa(bb(?:b))?)+$/
-    aabbbaa    
-    
+    aabbbaa
+
 /^(?:aa(b(?:bb))?)+$/
-    aabbbaa    
+    aabbbaa
 
 /^(?:aa(?:b(b))?)+$/
-    aabbaa    
+    aabbaa
 
 /^(?:aa(?:b(bb))?)+$/
-    aabbbaa    
+    aabbbaa
 
 /^(aa(b(bb))?)+$/
-    aabbbaa    
+    aabbbaa
 
 /^(aa(bb(bb))?)+$/
-    aabbbbaa    
+    aabbbbaa
 
-/--------------------------------------------------------------------/ 
-    
+/--------------------------------------------------------------------/
+
 /#/xMD
 
 /a#/xMD
@@ -805,15 +805,15 @@
 /a(?i)b/D
     ab
     aB
-    *** Failers 
-    AB  
+    *** Failers
+    AB
 
 /(a(?i)b)/D
     ab
     aB
-    *** Failers 
-    AB  
-    
+    *** Failers
+    AB
+
 /   (?i)abc/xD
 
 /#this is a comment
@@ -833,7 +833,7 @@
 /a\Q\E/D
   abc
   bca
-  bac  
+  bac
 
 /a\Q\Eb/D
   abc
@@ -843,12 +843,12 @@
 /x*+\w/D
     *** Failers
     xxxxx
-    
+
 /x?+/D
 
 /x++/D
 
-/x{1,3}+/D 
+/x{1,3}+/D
 
 /(x)*+/D
 
@@ -856,11 +856,11 @@
     now is the time for all good men to come to the aid of the party
     *** Failers
     this is not a line with only words and spaces!
-    
+
 /(\d++)(\w)/
     12345a
     *** Failers
-    12345+ 
+    12345+
 
 /a++b/
     aaab
@@ -873,12 +873,12 @@
 
 /([^()]++|\([^()]*\))+/
     ((abc(ade)ufh()()x
-    
-/\(([^()]++|\([^()]+\))+\)/ 
+
+/\(([^()]++|\([^()]+\))+\)/
     (abc)
     (abc(def)xyz)
     *** Failers
-    ((()aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa   
+    ((()aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 /(abc){1,3}+/D
 
@@ -935,8 +935,8 @@
     <abcd>
     <abc <123> hij>
     <abc <def> hij>
-    <abc<>def> 
-    <abc<>      
+    <abc<>def>
+    <abc<>
     *** Failers
     <abc
 
@@ -947,7 +947,7 @@
 /(.*)\d+\1/I
 
 /(.*)\d+/I
-    
+
 /(.*)\d+\1/Is
 
 /(.*)\d+/Is
@@ -956,7 +956,7 @@
 
 /((.*))\d+\1/I
     abc123bc
-    
+
 /a[b]/I
 
 /(?=a).*/I
@@ -1005,9 +1005,9 @@
 
 /^a/mI
   abcde
-  xy\nabc 
-  *** Failers 
-  xyabc 
+  xy\nabc
+  *** Failers
+  xyabc
 
 /c|abc/I
 
@@ -1017,24 +1017,24 @@
 
 /abc(?C)def/
     abcdef
-    1234abcdef 
+    1234abcdef
     *** Failers
     abcxyz
-    abcxyzf   
+    abcxyzf
 
 /abc(?C)de(?C1)f/
     123abcdef
-    
-/(?C1)\dabc(?C2)def/ 
+
+/(?C1)\dabc(?C2)def/
     1234abcdef
     *** Failers
-    abcdef 
-    
+    abcdef
+
 /(?C255)ab/
 
 /(?C256)ab/
 
-/(?Cab)xx/ 
+/(?Cab)xx/
 
 /(?C12vr)x/
 
@@ -1044,21 +1044,21 @@
 
 /(abc)(?C)de(?C1)f/
     123abcdef
-    123abcdef\C+ 
-    123abcdef\C- 
+    123abcdef\C+
+    123abcdef\C-
     *** Failers
-    123abcdef\C!1 
-    
+    123abcdef\C!1
+
 /(?C0)(abc(?C1))*/
     abcabcabc
-    abcabc\C!1!3   
+    abcabc\C!1!3
     *** Failers
-    abcabcabc\C!1!3   
+    abcabcabc\C!1!3
 
 /(\d{3}(?C))*/
     123\C+
     123456\C+
-    123456789\C+  
+    123456789\C+
 
 /((xyz)(?C)p|(?C1)xyzabc)/
     xyzabc\C+
@@ -1068,20 +1068,20 @@
 
 /(?=(abc))(?C)abcdef/
     abcdef\C+
-    
+
 /(?!(abc)(?C1)d)(?C2)abcxyz/
-    abcxyz\C+ 
+    abcxyz\C+
 
 /(?<=(abc)(?C))xyz/
    abcxyz\C+
-   
+
 /a(b+)(c*)(?C1)/
     abbbbbccc\C*1
 
 /a(b+?)(c*?)(?C1)/
     abbbbbccc\C*1
-   
-/(?C)abc/ 
+
+/(?C)abc/
 
 /(?C)^abc/
 
@@ -1100,7 +1100,7 @@
     xxab
     xxxab
     *** Failers
-    xyab   
+    xyab
 
 /(ab|(bc|(de|(?1))))/
 
@@ -1109,9 +1109,9 @@
 /^([^()]|\((?1)*\))*$/
     abc
     a(b)c
-    a(b(c))d  
+    a(b(c))d
     *** Failers)
-    a(b(c)d  
+    a(b(c)d
 
 /^>abc>([^()]|\((?1)*\))*<xyz<$/
    >abc>123<xyz<
@@ -1126,31 +1126,31 @@
     1221
     Satan, oscillate my metallic sonatas!
     A man, a plan, a canal: Panama!
-    Able was I ere I saw Elba. 
+    Able was I ere I saw Elba.
     *** Failers
-    The quick brown fox  
-    
+    The quick brown fox
+
 /^(\d+|\((?1)([+*-])(?1)\)|-(?1))$/
     12
     (((2+2)*-3)-7)
     -12
     *** Failers
     ((2+2)*-3)-7)
-         
+
 /^(x(y|(?1){2})z)/
     xyz
-    xxyzxyzz 
+    xxyzxyzz
     *** Failers
     xxyzz
-    xxyzxyzxyzz   
+    xxyzxyzxyzz
 
 /((< (?: (?(R) \d++  | [^<>]*+) | (?2)) * >))/x
     <>
     <abcd>
     <abc <123> hij>
     <abc <def> hij>
-    <abc<>def> 
-    <abc<>      
+    <abc<>def>
+    <abc<>
     *** Failers
     <abc
 
@@ -1164,16 +1164,16 @@
 /^(a|b|c)=(?1)+/
     a=a
     a=b
-    a=bc  
+    a=bc
 
 /^(a|b|c)=((?1))+/
     a=a
     a=b
-    a=bc  
+    a=bc
 
 /a(?P<name1>b|c)d(?P<longername2>e)/D
     abde
-    acde 
+    acde
 
 /(?:a(?P<c>c(?P<d>d)))(?P<a>a)/D
 
@@ -1183,13 +1183,13 @@
     1221
     Satan, oscillate my metallic sonatas!
     A man, a plan, a canal: Panama!
-    Able was I ere I saw Elba. 
+    Able was I ere I saw Elba.
     *** Failers
-    The quick brown fox  
-    
+    The quick brown fox
+
 /((?(R)a|b))\1(?1)?/
   bb
-  bbaa 
+  bbaa
 
 /(.*)a/sI
 
@@ -1235,7 +1235,7 @@
     abcdefgh
     abcdefgh\C1\Gtwo
     abcdefgh\Cone\Ctwo
-    abcdefgh\Cthree  
+    abcdefgh\Cthree
 
 /(?P<Tes>)(?P<Test>)/D
 
@@ -1252,11 +1252,11 @@
 "\[((?P<elem>\d+)(,(?P>elem))*)\]"
     [10,20,30,5,5,4,4,2,43,23,4234]
     *** Failers
-    []  
+    []
 
 "\[((?P<elem>\d+)(,(?P>elem))*)?\]"
     [10,20,30,5,5,4,4,2,43,23,4234]
-    [] 
+    []
 
 /(a(b(?2)c))?/D
 
@@ -1271,26 +1271,26 @@
 
 /((w\/|-|with)*(free|immediate)*.*?shipping\s*[!.-]*)/iS
      Baby Bjorn Active Carrier - With free SHIPPING!!
-     
+
 /a*.*b/SD
 
-/(a|b)*.?c/SD 
+/(a|b)*.?c/SD
 
 /abc(?C255)de(?C)f/D
 
 /abcde/CD
   abcde
-  abcdfe 
-  
+  abcdfe
+
 /a*b/CD
   ab
   aaaab
-  aaaacb   
+  aaaacb
 
 /a+b/CD
   ab
   aaaab
-  aaaacb   
+  aaaacb
 
 /(abc|def)x/CD
   abcx
@@ -1300,7 +1300,7 @@
 /(ab|cd){3,4}/C
   ababab
   abcdabcd
-  abcdcdcdcdcd  
+  abcdcdcdcdcd
 
 /([ab]{,4}c|xy)/CD
     Note: that { does NOT introduce a quantifier
@@ -1310,33 +1310,33 @@
 
 /\b.*/I
   ab cd\>1
-  
-/\b.*/Is 
+
+/\b.*/Is
   ab cd\>1
-  
+
 /(?!.bcd).*/I
-  Xbcd12345 
+  Xbcd12345
 
 /abcde/
     ab\P
     abc\P
     abcd\P
-    abcde\P   
+    abcde\P
     the quick brown abc\P
     ** Failers\P
     the quick brown abxyz fox\P
-    
+
 "^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/(20)?\d\d$"
     13/05/04\P
     13/5/2004\P
-    02/05/09\P 
+    02/05/09\P
     1\P
     1/2\P
     1/2/0\P
-    1/2/04\P    
+    1/2/04\P
     0\P
     02/\P
-    02/0\P   
+    02/0\P
     02/1\P
     ** Failers\P
     \P
@@ -1344,14 +1344,14 @@
     33/4/04\P
     3/13/04\P
     0/1/2003\P
-    0/\P 
-    02/0/\P 
-    02/13\P  
+    0/\P
+    02/0/\P
+    02/13\P
 
 /0{0,2}ABC/I
-    
+
 /\d{3,}ABC/I
-    
+
 /\d*ABC/I
 
 /[abc]+DE/I
@@ -1362,7 +1362,7 @@
     b\P
     c\P
     c12\P
-    c123\P      
+    c123\P
 
 /^(?:\d){3,5}X/
     1\P
@@ -1371,17 +1371,17 @@
     1234\P
     1234X
     12345\P
-    12345X      
-    *** Failers 
-    1X 
-    123456\P 
+    12345X
+    *** Failers
+    1X
+    123456\P
 
 /abc/>testsavedregex
 <testsavedregex
     abc
     ** Failers
     bca
-    
+
 /abc/F>testsavedregex
 <testsavedregex
     abc
@@ -1392,14 +1392,14 @@
 <testsavedregex
     abc
     ** Failers
-    def  
-    
+    def
+
 /(a|b)/SF>testsavedregex
 <testsavedregex
     abc
     ** Failers
-    def  
-    
+    def
+
 ~<(\w+)/?>(.)*</(\1)>~smg
     <!DOCTYPE seite SYSTEM "http://www.lco.lineas.de/xmlCms.dtd">\n<seite>\n<dokumenteninformation>\n<seitentitel>Partner der LCO</seitentitel>\n<sprache>de</sprache>\n<seitenbeschreibung>Partner der LINEAS Consulting\nGmbH</seitenbeschreibung>\n<schluesselworte>LINEAS Consulting GmbH Hamburg\nPartnerfirmen</schluesselworte>\n<revisit>30 days</revisit>\n<robots>index,follow</robots>\n<menueinformation>\n<aktiv>ja</aktiv>\n<menueposition>3</menueposition>\n<menuetext>Partner</menuetext>\n</menueinformation>\n<lastedited>\n<autor>LCO</autor>\n<firma>LINEAS Consulting</firma>\n<datum>15.10.2003</datum>\n</lastedited>\n</dokumenteninformation>\n<inhalt>\n\n<absatzueberschrift>Die Partnerfirmen der LINEAS Consulting\nGmbH</absatzueberschrift>\n\n<absatz><link ziel="http://www.ca.com/" zielfenster="_blank">\n<bild name="logo_ca.gif" rahmen="no"/></link> <link\nziel="http://www.ey.com/" zielfenster="_blank"><bild\nname="logo_euy.gif" rahmen="no"/></link>\n</absatz>\n\n<absatz><link ziel="http://www.cisco.de/" zielfenster="_blank">\n<bild name="logo_cisco.gif" rahmen="ja"/></link></absatz>\n\n<absatz><link ziel="http://www.atelion.de/"\nzielfenster="_blank"><bild\nname="logo_atelion.gif" rahmen="no"/></link>\n</absatz>\n\n<absatz><link ziel="http://www.line-information.de/"\nzielfenster="_blank">\n<bild name="logo_line_information.gif" rahmen="no"/></link>\n</absatz>\n\n<absatz><bild name="logo_aw.gif" rahmen="no"/></absatz>\n\n<absatz><link ziel="http://www.incognis.de/"\nzielfenster="_blank"><bild\nname="logo_incognis.gif" rahmen="no"/></link></absatz>\n\n<absatz><link ziel="http://www.addcraft.com/"\nzielfenster="_blank"><bild\nname="logo_addcraft.gif" rahmen="no"/></link></absatz>\n\n<absatz><link ziel="http://www.comendo.com/"\nzielfenster="_blank"><bild\nname="logo_comendo.gif" rahmen="no"/></link></absatz>\n\n</inhalt>\n</seite>
 
@@ -1407,34 +1407,34 @@
 
 /line\nbreak/
     this is a line\nbreak
-    line one\nthis is a line\nbreak in the second line 
+    line one\nthis is a line\nbreak in the second line
 
 /line\nbreak/f
     this is a line\nbreak
-    ** Failers 
-    line one\nthis is a line\nbreak in the second line 
+    ** Failers
+    line one\nthis is a line\nbreak in the second line
 
 /line\nbreak/mf
     this is a line\nbreak
-    ** Failers 
-    line one\nthis is a line\nbreak in the second line 
+    ** Failers
+    line one\nthis is a line\nbreak in the second line
 
 /ab.cd/P
     ab-cd
-    ab=cd 
+    ab=cd
     ** Failers
     ab\ncd
 
 /ab.cd/Ps
     ab-cd
-    ab=cd 
+    ab=cd
     ab\ncd
 
 /(?i)(?-i)AbCd/
     AbCd
     ** Failers
-    abcd  
-    
+    abcd
+
 /a{11111111111111111111}/
 
 /(){64294967295}/
@@ -1458,35 +1458,35 @@
 
 /[^()]*(?:\((?R)\)[^()]*)*/
     (this(and)that
-    (this(and)that) 
+    (this(and)that)
     (this(and)that)stuff
 
 /[^()]*(?:\((?>(?R))\)[^()]*)*/
     (this(and)that
-    (this(and)that) 
-    
+    (this(and)that)
+
 /[^()]*(?:\((?R)\))*[^()]*/
     (this(and)that
-    (this(and)that) 
+    (this(and)that)
 
 /(?:\((?R)\))*[^()]*/
     (this(and)that
-    (this(and)that) 
-    ((this)) 
+    (this(and)that)
+    ((this))
 
 /(?:\((?R)\))|[^()]*/
     (this(and)that
-    (this(and)that) 
+    (this(and)that)
     (this)
-    ((this)) 
-    
+    ((this))
+
 /a(b)c/PN
     abc
-    
+
 /a(?P<name>b)c/PN
-    abc  
-    
-/\x{100}/ 
+    abc
+
+/\x{100}/
 
 /\x{0000ff}/
 
@@ -1494,44 +1494,44 @@
 
 /^((?P<A>a1)|(?P<A>a2)b)/J
     a1b\CA
-    a2b\CA 
+    a2b\CA
     ** Failers
-    a1b\CZ\CA 
-    
+    a1b\CZ\CA
+
 /^(?P<A>a)(?P<A>b)/J
     ab\CA
-    
+
 /^(?P<A>a)(?P<A>b)|cd/J
     ab\CA
-    cd\CA 
-  
+    cd\CA
+
 /^(?P<A>a)(?P<A>b)|cd(?P<A>ef)(?P<A>gh)/J
-    cdefgh\CA 
-  
+    cdefgh\CA
+
 /^((?P<A>a1)|(?P<A>a2)b)/J
     a1b\GA
-    a2b\GA 
+    a2b\GA
     ** Failers
-    a1b\GZ\GA 
-    
+    a1b\GZ\GA
+
 /^(?P<A>a)(?P<A>b)/J
     ab\GA
-    
+
 /^(?P<A>a)(?P<A>b)|cd/J
     ab\GA
-    cd\GA 
-  
+    cd\GA
+
 /^(?P<A>a)(?P<A>b)|cd(?P<A>ef)(?P<A>gh)/J
-    cdefgh\GA 
-  
+    cdefgh\GA
+
 /(?J)^((?P<A>a1)|(?P<A>a2)b)/
     a1b\CA
-    a2b\CA 
-    
+    a2b\CA
+
 /^(?P<A>a) (?J:(?P<B>b)(?P<B>c)) (?P<A>d)/
 
 / In this next test, J is not set at the outer level; consequently it isn't
-set in the pattern's options; consequently pcre_get_named_substring() produces 
+set in the pattern's options; consequently pcre_get_named_substring() produces
 a random value. /x
 
 /^(?P<A>a) (?J:(?P<B>b)(?P<B>c)) (?P<C>d)/
@@ -1541,7 +1541,7 @@ a random value. /x
     aabc
     bc
     ** Failers
-    abc   
+    abc
 
 /(?:(?(ZZ)a|b)(?P<ZZ>X))+/
     bXaX
@@ -1560,7 +1560,7 @@ a random value. /x
 
 /(?:(?(A)(?P=A)a|b)(?P<A>X|Y))+/
     bXXaYYaY
-    bXYaXXaX  
+    bXYaXXaX
 
 /()()()()()()()()()(?:(?(A)(?P=A)a|b)(?P<A>X|Y))+/
     bXXaYYaY
@@ -1569,7 +1569,7 @@ a random value. /x
 
 /\s*,\s*/S
     \x0b,\x0b
-    \x0c,\x0d 
+    \x0c,\x0d
 
 /^abc/m
     xyz\nabc
@@ -1577,51 +1577,51 @@ a random value. /x
     xyz\r\nabc\<lf>
     xyz\rabc\<cr>
     xyz\r\nabc\<crlf>
-    ** Failers 
+    ** Failers
     xyz\nabc\<cr>
     xyz\r\nabc\<cr>
     xyz\nabc\<crlf>
     xyz\rabc\<crlf>
     xyz\rabc\<lf>
-    
+
 /abc$/m
     xyzabc
-    xyzabc\n 
-    xyzabc\npqr 
-    xyzabc\r\<cr> 
-    xyzabc\rpqr\<cr> 
-    xyzabc\r\n\<crlf> 
-    xyzabc\r\npqr\<crlf> 
+    xyzabc\n
+    xyzabc\npqr
+    xyzabc\r\<cr>
+    xyzabc\rpqr\<cr>
+    xyzabc\r\n\<crlf>
+    xyzabc\r\npqr\<crlf>
     ** Failers
-    xyzabc\r 
-    xyzabc\rpqr 
-    xyzabc\r\n 
-    xyzabc\r\npqr 
-    
+    xyzabc\r
+    xyzabc\rpqr
+    xyzabc\r\n
+    xyzabc\r\npqr
+
 /^abc/m<cr>
     xyz\rabcdef
     xyz\nabcdef\<lf>
-    ** Failers  
+    ** Failers
     xyz\nabcdef
-       
+
 /^abc/m<lf>
     xyz\nabcdef
     xyz\rabcdef\<cr>
-    ** Failers  
+    ** Failers
     xyz\rabcdef
-       
+
 /^abc/m<crlf>
     xyz\r\nabcdef
     xyz\rabcdef\<cr>
-    ** Failers  
+    ** Failers
     xyz\rabcdef
-    
+
 /^abc/m<bad>
 
 /abc/
     xyz\rabc\<bad>
-    abc  
-       
+    abc
+
 /.*/
     abc\ndef
     abc\rdef

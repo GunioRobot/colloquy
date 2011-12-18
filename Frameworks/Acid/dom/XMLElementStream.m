@@ -1,24 +1,24 @@
 //============================================================================
-// 
+//
 //     License:
-// 
+//
 //     This library is free software; you can redistribute it and/or
 //     modify it under the terms of the GNU Lesser General Public
 //     License as published by the Free Software Foundation; either
 //     version 2.1 of the License, or (at your option) any later version.
-// 
+//
 //     This library is distributed in the hope that it will be useful,
 //     but WITHOUT ANY WARRANTY; without even the implied warranty of
 //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //     Lesser General Public License for more details.
-// 
+//
 //     You should have received a copy of the GNU Lesser General Public
 //     License along with this library; if not, write to the Free Software
-//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
 //     USA
-// 
+//
 //     Copyright (C) 2002-2003 Dave Smith (dizzyd@jabber.org)
-// 
+//
 // $Id: XMLElementStream.m,v 1.1 2004/07/19 03:49:03 jtownsend Exp $
 //============================================================================
 
@@ -107,7 +107,7 @@ static void _storeCData(void* data, const XML_Char* s, int len)
     [parser storeCData:(char*)s ofLength:len];
 }
 
-static void _handleEnterNamespace(void* data, const XML_Char* prefix, 
+static void _handleEnterNamespace(void* data, const XML_Char* prefix,
                                   const XML_Char* uri)
 {
     XMLElementStream* parser = (XMLElementStream*)data;
@@ -143,7 +143,7 @@ static NSMutableArray* G_FACTORY;
 
     // Startup parser
     [self reset];
-    
+
     return self;
 }
 
@@ -162,7 +162,7 @@ static NSMutableArray* G_FACTORY;
     // Assign pointer to _listener
     _listener = listener;
 
-    return self;    
+    return self;
 }
 
 -(void) enterNamespace:(const char*)prefix withURI:(const char*)uri
@@ -226,7 +226,7 @@ static NSMutableArray* G_FACTORY;
     new_element = [XMLElementStream factoryCreateElement:qname
                                     withAttributes:new_element_attribs
                                     withDefaultURI:default_uri];
-    
+
     // If the document has started...
     if (_document_started)
     {
@@ -269,7 +269,7 @@ static NSMutableArray* G_FACTORY;
         _current_element = nil;
     }
     // No current_element and no parents; this event is closing the
-    // document 
+    // document
     else
     {
         [_listener onDocumentEnd];
@@ -316,7 +316,7 @@ static NSMutableArray* G_FACTORY;
     XML_SetUserData(_parser, self);
     XML_SetElementHandler(_parser, _handleOpenElement, _handleCloseElement);
     XML_SetCharacterDataHandler(_parser, _storeCData);
-    XML_SetNamespaceDeclHandler(_parser, _handleEnterNamespace, 
+    XML_SetNamespaceDeclHandler(_parser, _handleEnterNamespace,
                                 _handleExitNamespace);
 
 

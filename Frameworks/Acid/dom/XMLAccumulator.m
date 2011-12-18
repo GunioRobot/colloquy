@@ -1,24 +1,24 @@
 //============================================================================
-// 
+//
 //     License:
-// 
+//
 //     This library is free software; you can redistribute it and/or
 //     modify it under the terms of the GNU Lesser General Public
 //     License as published by the Free Software Foundation; either
 //     version 2.1 of the License, or (at your option) any later version.
-// 
+//
 //     This library is distributed in the hope that it will be useful,
 //     but WITHOUT ANY WARRANTY; without even the implied warranty of
 //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //     Lesser General Public License for more details.
-// 
+//
 //     You should have received a copy of the GNU Lesser General Public
 //     License along with this library; if not, write to the Free Software
-//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
 //     USA
-// 
+//
 //     Copyright (C) 2002 Dave Smith (dizzyd@jabber.org)
-// 
+//
 // $Id: XMLAccumulator.m,v 1.2 2004/10/03 11:09:06 jtownsend Exp $
 //============================================================================
 
@@ -27,7 +27,7 @@
 
 @implementation XMLAccumulator
 
--(id) init:(NSMutableString*)data 
+-(id) init:(NSMutableString*)data
 {
     [super init];
     _prefixes = [[NSMutableDictionary alloc] init];
@@ -44,7 +44,7 @@
     [super dealloc];
 }
 
--(void) addOverridePrefix:(NSString*)prefix forURI:(NSString*)uri 
+-(void) addOverridePrefix:(NSString*)prefix forURI:(NSString*)uri
 {
     [_overrides setObject:prefix forKey:uri];
 }
@@ -201,13 +201,13 @@
 {
     // Create a pool to catch any temps which might be generated
     NSAutoreleasePool* workpool = [[NSAutoreleasePool alloc] init];
-    
+
     // Setup result data holder and accumulator
-    NSMutableString* result = [[NSMutableString alloc] initWithCapacity:512];    
+    NSMutableString* result = [[NSMutableString alloc] initWithCapacity:512];
     XMLAccumulator* acc = [[XMLAccumulator alloc] init:result];
     [element description:acc];
     [acc release];
-    
+
     // Let go of the autorelease pool
     [workpool release];
     // Now autorelase the result string

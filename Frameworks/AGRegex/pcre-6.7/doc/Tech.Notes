@@ -1,7 +1,7 @@
 Technical Notes about PCRE
 --------------------------
 
-These are very rough technical notes that record potentially useful information 
+These are very rough technical notes that record potentially useful information
 about PCRE internals.
 
 Historical note 1
@@ -53,21 +53,21 @@ handle all the Perl stuff.
 Traditional matching function
 -----------------------------
 
-The "traditional", and original, matching function is called pcre_exec(), and 
-it implements an NFA algorithm, similar to the original Henry Spencer algorithm 
-and the way that Perl works. Not surprising, since it is intended to be as 
-compatible with Perl as possible. This is the function most users of PCRE will 
+The "traditional", and original, matching function is called pcre_exec(), and
+it implements an NFA algorithm, similar to the original Henry Spencer algorithm
+and the way that Perl works. Not surprising, since it is intended to be as
+compatible with Perl as possible. This is the function most users of PCRE will
 use most of the time.
 
 Supplementary matching function
 -------------------------------
 
-From PCRE 6.0, there is also a supplementary matching function called 
-pcre_dfa_exec(). This implements a DFA matching algorithm that searches 
-simultaneously for all possible matches that start at one point in the subject 
-string. (Going back to my roots: see Historical Note 1 above.) This function 
-intreprets the same compiled pattern data as pcre_exec(); however, not all the 
-facilities are available, and those that are do not always work in quite the 
+From PCRE 6.0, there is also a supplementary matching function called
+pcre_dfa_exec(). This implements a DFA matching algorithm that searches
+simultaneously for all possible matches that start at one point in the subject
+string. (Going back to my roots: see Historical Note 1 above.) This function
+intreprets the same compiled pattern data as pcre_exec(); however, not all the
+facilities are available, and those that are do not always work in quite the
 same way. See the user documentation for details.
 
 Format of compiled patterns
@@ -76,12 +76,12 @@ Format of compiled patterns
 The compiled form of a pattern is a vector of bytes, containing items of
 variable length. The first byte in an item is an opcode, and the length of the
 item is either implicit in the opcode or contained in the data bytes that
-follow it. 
+follow it.
 
 In many cases below "two-byte" data values are specified. This is in fact just
 a default. PCRE can be compiled to use 3-byte or 4-byte values (impairing the
 performance). This is necessary only when patterns whose compiled length is
-greater than 64K are going to be processed. In this description, we assume the 
+greater than 64K are going to be processed. In this description, we assume the
 "normal" compilation options.
 
 A list of all the opcodes follows:
@@ -108,8 +108,8 @@ These items are all just one byte long
   OP_EODN                match end of data or \n at end: \Z
   OP_EOD                 match end of data: \z
   OP_DOLL                $ (end of data, or before \n in multiline)
-  OP_EXTUNI              match an extended Unicode character 
-  
+  OP_EXTUNI              match an extended Unicode character
+
 
 Repeating single characters
 ---------------------------
@@ -159,23 +159,23 @@ byte. The opcodes are:
 Match by Unicode property
 -------------------------
 
-OP_PROP and OP_NOTPROP are used for positive and negative matches of a 
+OP_PROP and OP_NOTPROP are used for positive and negative matches of a
 character by testing its Unicode property (the \p and \P escape sequences).
-Each is followed by two bytes that encode the desired property as a type and a 
+Each is followed by two bytes that encode the desired property as a type and a
 value.
 
-Repeats of these items use the OP_TYPESTAR etc. set of opcodes, followed by 
-three bytes: OP_PROP or OP_NOTPROP and then the desired property type and 
+Repeats of these items use the OP_TYPESTAR etc. set of opcodes, followed by
+three bytes: OP_PROP or OP_NOTPROP and then the desired property type and
 value.
 
 
 Matching literal characters
 ---------------------------
 
-The OP_CHAR opcode is followed by a single character that is to be matched 
-casefully. For caseless matching, OP_CHARNC is used. In UTF-8 mode, the 
-character may be more than one byte long. (Earlier versions of PCRE used 
-multi-character strings, but this was changed to allow some new features to be 
+The OP_CHAR opcode is followed by a single character that is to be matched
+casefully. For caseless matching, OP_CHARNC is used. In UTF-8 mode, the
+character may be more than one byte long. (Earlier versions of PCRE used
+multi-character strings, but this was changed to allow some new features to be
 added.)
 
 
@@ -315,9 +315,9 @@ Recursion
 
 Recursion either matches the current regex, or some subexpression. The opcode
 OP_RECURSE is followed by an value which is the offset to the starting bracket
-from the start of the whole pattern. From release 6.5, OP_RECURSE is 
-automatically wrapped inside OP_ONCE brackets (because otherwise some patterns 
-broke it). OP_RECURSE is also used for "subroutine" calls, even though they 
+from the start of the whole pattern. From release 6.5, OP_RECURSE is
+automatically wrapped inside OP_ONCE brackets (because otherwise some patterns
+broke it). OP_RECURSE is also used for "subroutine" calls, even though they
 are not strictly a recursion.
 
 
@@ -325,7 +325,7 @@ Callout
 -------
 
 OP_CALLOUT is followed by one byte of data that holds a callout number in the
-range 0 to 254 for manual callouts, or 255 for an automatic callout. In both 
+range 0 to 254 for manual callouts, or 255 for an automatic callout. In both
 cases there follows a two-byte value giving the offset in the pattern to the
 start of the following item, and another two-byte item giving the length of the
 next item.

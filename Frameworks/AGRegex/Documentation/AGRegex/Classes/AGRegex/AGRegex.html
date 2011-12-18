@@ -46,9 +46,9 @@ Captured subpatterns can be interpolated into the replacement string using the s
 <code>&nbsp;&nbsp;&nbsp;&nbsp;AGRegex *regex = [AGRegex regexWithPattern:&#64;"[usr]"];<br />
 &nbsp;&nbsp;&nbsp;&nbsp;NSString *result = [regex replaceWithString:&#64;"\\u$&amp;." inString:&#64;"Back in the ussr"]; // result is "Back in the U.S.S.R."</code>
 <br><br>
-Note that you have to escape a backslash to get it into an NSString literal. 
+Note that you have to escape a backslash to get it into an NSString literal.
 <br><br>
-Named subpatterns may also be used in the pattern and replacement strings, like in Python. 
+Named subpatterns may also be used in the pattern and replacement strings, like in Python.
 <br><br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;AGRegex *regex = [AGRegex regexWithPattern:&#64;"(?P&lt;who&gt;\\w+) is a (?P&lt;what&gt;\\w+)"];<br />
 &nbsp;&nbsp;&nbsp;&nbsp;NSString *result = [regex replaceWithString:&#64;"Jackie is a $what, $who is a runt" inString:&#64;"Judy is a punk"]); // result is "Jackie is a punk, Judy is a runt"</code>
@@ -58,7 +58,7 @@ Finally, AGRegex provides -splitString: and -splitString:limit: which return an 
 <code>&nbsp;&nbsp;&nbsp;&nbsp;AGRegex *regex = [AGRegex regexWithPattern:&#64;"ea?"];<br />
 &nbsp;&nbsp;&nbsp;&nbsp;NSArray *result = [regex splitString:&#64;"Repeater"]; // result is "R", "p", "t", "r"</code>
 <br><br>
-If there are captured subpatterns, they are returned in the array. 
+If there are captured subpatterns, they are returned in the array.
 <br><br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;AGRegex *regex = [AGRegex regexWithPattern:&#64;"e(a)?"];<br />
 &nbsp;&nbsp;&nbsp;&nbsp;NSArray *result = [regex splitString:&#64;"Repeater"]; // result is "R", "p", "a", "t", "r"</code>

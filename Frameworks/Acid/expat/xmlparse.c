@@ -549,7 +549,7 @@ XML_Parser
 XML_ParserCreate_MM(const XML_Char *encodingName,
 		    const XML_Memory_Handling_Suite *memsuite,
 		    const XML_Char *nameSep) {
-  
+
   XML_Parser parser;
   static
   const XML_Char implicitContext[] = {
@@ -1877,10 +1877,10 @@ static enum XML_Error storeAtts(XML_Parser parser, const ENCODING *enc,
   int i;
   int n;
   int nPrefixes = 0;
-  int prefixLen = 0;   
+  int prefixLen = 0;
   BINDING *binding;
   const XML_Char *localPart;
-  XML_Char *uri;       
+  XML_Char *uri;
 
   /* lookup the element type name */
   if (tagNamePtr) {
@@ -2089,7 +2089,7 @@ static enum XML_Error storeAtts(XML_Parser parser, const ENCODING *enc,
   }
   if (n > binding->uriAlloc) {
     TAG *p;
-    uri = MALLOC((n + EXPAND_SPARE) * sizeof(XML_Char)); 
+    uri = MALLOC((n + EXPAND_SPARE) * sizeof(XML_Char));
     if (!uri)
       return XML_ERROR_NO_MEMORY;
     binding->uriAlloc = n + EXPAND_SPARE;
@@ -2384,11 +2384,11 @@ processXmlDecl(XML_Parser parser, int isGeneralTextEntity,
 	       const char *s, const char *next)
 {
   const char *encodingName = 0;
-  const char *storedEncName = 0;  
+  const char *storedEncName = 0;
   const ENCODING *newEncoding = 0;
   const char *version = 0;
   const char *versionend;
-  const char *storedversion = 0;  
+  const char *storedversion = 0;
   int standalone = -1;
   if (!(ns
         ? XmlParseXmlDeclNS
@@ -2705,43 +2705,43 @@ doProlog(XML_Parser parser,
       break;
     case XML_ROLE_ATTRIBUTE_TYPE_CDATA:
       declAttributeIsCdata = 1;
-      declAttributeType = "CDATA";    
+      declAttributeType = "CDATA";
       break;
     case XML_ROLE_ATTRIBUTE_TYPE_ID:
       declAttributeIsId = 1;
-      declAttributeType = "ID";       
+      declAttributeType = "ID";
       break;
     case XML_ROLE_ATTRIBUTE_TYPE_IDREF:
-      declAttributeType = "IDREF";    
+      declAttributeType = "IDREF";
       break;
     case XML_ROLE_ATTRIBUTE_TYPE_IDREFS:
-      declAttributeType = "IDREFS";   
+      declAttributeType = "IDREFS";
       break;
     case XML_ROLE_ATTRIBUTE_TYPE_ENTITY:
-      declAttributeType = "ENTITY";   
+      declAttributeType = "ENTITY";
       break;
     case XML_ROLE_ATTRIBUTE_TYPE_ENTITIES:
-      declAttributeType = "ENTITIES"; 
+      declAttributeType = "ENTITIES";
       break;
     case XML_ROLE_ATTRIBUTE_TYPE_NMTOKEN:
-      declAttributeType = "NMTOKEN";  
+      declAttributeType = "NMTOKEN";
       break;
     case XML_ROLE_ATTRIBUTE_TYPE_NMTOKENS:
-      declAttributeType = "NMTOKENS"; 
+      declAttributeType = "NMTOKENS";
       break;
 
     case XML_ROLE_ATTRIBUTE_ENUM_VALUE:
     case XML_ROLE_ATTRIBUTE_NOTATION_VALUE:
       if (attlistDeclHandler)
       {
-	const char *prefix;                       
+	const char *prefix;
 	if (declAttributeType) {
-	  prefix = "|";                   
+	  prefix = "|";
 	}
 	else {
 	  prefix = (role == XML_ROLE_ATTRIBUTE_NOTATION_VALUE
-		    ? "NOTATION("             
-		    : "(");                   
+		    ? "NOTATION("
+		    : "(");
 	}
 	if (! poolAppendString(&tempPool, prefix))
 	  return XML_ERROR_NO_MEMORY;
@@ -3169,7 +3169,7 @@ doProlog(XML_Parser parser,
 	dtd.in_eldecl = 0;
       }
       break;
-      
+
     case XML_ROLE_CONTENT_PCDATA:
       if (dtd.in_eldecl) {
 	dtd.scaffold[dtd.scaffIndex[dtd.scaffLevel - 1]].type = XML_CTYPE_MIXED;
@@ -3671,7 +3671,7 @@ reportComment(XML_Parser parser, const ENCODING *enc, const char *start, const c
   }
   data = poolStoreString(&tempPool,
                          enc,
-                         start + enc->minBytesPerChar * 4, 
+                         start + enc->minBytesPerChar * 4,
 			 end - enc->minBytesPerChar * 3);
   if (!data)
     return 0;
@@ -3980,7 +3980,7 @@ void normalizePublicId(XML_Char *publicId)
 
 static int dtdInit(DTD *p, XML_Parser parser)
 {
-  XML_Memory_Handling_Suite *ms = &((Parser *) parser)->m_mem; 
+  XML_Memory_Handling_Suite *ms = &((Parser *) parser)->m_mem;
   poolInit(&(p->pool), ms);
   hashTableInit(&(p->generalEntities), ms);
   hashTableInit(&(p->elementTypes), ms);
@@ -4446,7 +4446,7 @@ const XML_Char *poolAppendString(STRING_POOL *pool, const XML_Char *s)
     if (!poolAppendChar(pool, *s))
       return 0;
     s++;
-  } 
+  }
   return pool->start;
 }  /* End poolAppendString */
 
@@ -4547,7 +4547,7 @@ nextScaffoldPart(XML_Parser parser)
   }
   next = dtd.scaffCount++;
   me = &dtd.scaffold[next];
-  if (dtd.scaffLevel) { 
+  if (dtd.scaffLevel) {
     CONTENT_SCAFFOLD *parent = &dtd.scaffold[dtd.scaffIndex[dtd.scaffLevel - 1]];
     if (parent->lastchild) {
       dtd.scaffold[parent->lastchild].nextsib = next;
@@ -4566,12 +4566,12 @@ build_node (XML_Parser parser,
 	    int src_node,
 	    XML_Content *dest,
 	    XML_Content **contpos,
-	    char **strpos)          
+	    char **strpos)
 {
   dest->type = dtd.scaffold[src_node].type;
   dest->quant = dtd.scaffold[src_node].quant;
   if (dest->type == XML_CTYPE_NAME) {
-    const char *src;            
+    const char *src;
     dest->name = *strpos;
     src = dtd.scaffold[src_node].name;
     for (;;) {
@@ -4603,14 +4603,14 @@ build_model (XML_Parser parser)
 {
   XML_Content *ret;
   XML_Content *cpos;
-  char * str;                              
+  char * str;
   int allocsize = dtd.scaffCount * sizeof(XML_Content) + dtd.contentStringLen;
-  
+
   ret = MALLOC(allocsize);
   if (! ret)
     return 0;
 
-  str =  (char *) (&ret[dtd.scaffCount]);   
+  str =  (char *) (&ret[dtd.scaffCount]);
   cpos = &ret[1];
 
   build_node(parser, 0, ret, &cpos, &str);

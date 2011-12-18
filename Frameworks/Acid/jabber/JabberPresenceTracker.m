@@ -1,25 +1,25 @@
 //============================================================================
-// 
+//
 //     License:
-// 
+//
 //     This library is free software; you can redistribute it and/or
 //     modify it under the terms of the GNU Lesser General Public
 //     License as published by the Free Software Foundation; either
 //     version 2.1 of the License, or (at your option) any later version.
-// 
+//
 //     This library is distributed in the hope that it will be useful,
 //     but WITHOUT ANY WARRANTY; without even the implied warranty of
 //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //     Lesser General Public License for more details.
-// 
+//
 //     You should have received a copy of the GNU Lesser General Public
 //     License along with this library; if not, write to the Free Software
-//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  
+//     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
 //     USA
-// 
+//
 //     Copyright (C) 2002 Dave Smith (dizzyd@jabber.org)
 //     Copyright (C) 2002 David Waite (mass@akuma.org)
-// 
+//
 // $Id: JabberPresenceTracker.m,v 1.3 2005/05/05 05:11:55 gbooker Exp $
 //============================================================================
 
@@ -153,7 +153,7 @@ the same [node@]domain, but differing by resource.
 	else
 	{
             [_packets insertObject:p atIndex:i];
-	    
+
             // If this item was inserted at the front of the array,
             // it is the new default presence
             return (i == 0) ? YES : NO;
@@ -258,7 +258,7 @@ the same [node@]domain, but differing by resource.
         [_items setObject:pgroup forKey:userhost_jid];
         [pgroup release];
     }
-    
+
     // If the updatePresence call indicates the default was changed,
     // generate the appropriate event
     if ([pgroup updatePresence:pres])
@@ -287,7 +287,7 @@ the same [node@]domain, but differing by resource.
         {
             [_session postNotificationName:JPRESENCE_JID_UNAVAILABLE
                                     object:userhost_jid];
-            [_items removeObjectForKey:userhost_jid];            
+            [_items removeObjectForKey:userhost_jid];
         }
         // Otherwise, fire an event only if the default presence packet
         // for this JID has changed
@@ -310,7 +310,7 @@ the same [node@]domain, but differing by resource.
     {
         // Remove all presence packets and fire the appropriate events
         [_items removeObjectForKey:userhost_jid];
-        [_session postNotificationName:JPRESENCE_JID_UNAVAILABLE object:userhost_jid];            
+        [_session postNotificationName:JPRESENCE_JID_UNAVAILABLE object:userhost_jid];
     }
 }
 
@@ -324,7 +324,7 @@ the same [node@]domain, but differing by resource.
 {
     PGroup* pgroup = [_items objectForKey:[jid userhostJID]];
     return [pgroup presenceForJID:jid];
-    
+
 }
 -(NSEnumerator*) presenceEnumeratorForJID:(JabberID*)jid
 {

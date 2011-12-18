@@ -36,7 +36,7 @@ static void handle_conn( int sock, http_server_t *me ) {
 	}
 
 	req -> delete( req );
-	resp -> delete( resp );	
+	resp -> delete( resp );
 }
 
 http_server_t *http_server_new( const char *host, const char *svc ) {
@@ -156,7 +156,7 @@ const char*	http_server_get_mime(http_server_t *me, const char *ext ) {
 int http_server_add_url_mapping( http_server_t *me, const char *url, http_server_handler handler ) {
 	url_map_t *url_map = url_map_new(url, handler );
 	if( ! url_map ) return -1;
-	me -> url_mappings -> add ( me -> url_mappings, url_map );	
+	me -> url_mappings -> add ( me -> url_mappings, url_map );
 	return 0;
 }
 

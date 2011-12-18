@@ -16,12 +16,12 @@
 	NSMutableDictionary	*_nodes;
 	NSMutableDictionary	*_edges;
 	NSMutableSet		*_allSeenNodes;
-	
+
 	KAConfiguration		*_config;
-	
+
 	double				_maxWeight;
 	int					_framecount;
-	
+
 }
 
 #pragma mark -

@@ -125,8 +125,8 @@ NSString *JVPythonErrorDomain = @"JVPythonErrorDomain";
 	NSFileManager *fm = [NSFileManager defaultManager];
 	NSString *path = [self scriptFilePath];
 
-	// if we didn't originally load with a human editable file path, 
-	// try to find the human editable version and check it for changes 
+	// if we didn't originally load with a human editable file path,
+	// try to find the human editable version and check it for changes
 	if( ! [[path pathExtension] isEqualToString:@"py"] ) {
 		path = [[self scriptFilePath] stringByDeletingPathExtension];
 		path = [path stringByAppendingPathExtension:@"py"];
@@ -264,7 +264,7 @@ NSString *JVPythonErrorDomain = @"JVPythonErrorDomain";
 	if( ! _scriptModule ) return nil;
 
     PyGILState_STATE state;
-	
+
 	PyObject *dict = PyModule_GetDict( _scriptModule );
 	if( ! dict ) return nil;
 
@@ -291,7 +291,7 @@ NSString *JVPythonErrorDomain = @"JVPythonErrorDomain";
 
 		Py_XDECREF( ret );
 		Py_DECREF( args );
-		
+
 		[self reportErrorIfNeededInFunction:functionName];
 
 		PyGILState_Release(state);

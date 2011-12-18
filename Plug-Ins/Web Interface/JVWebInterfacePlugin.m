@@ -50,7 +50,7 @@ static void processCommand( http_req_t *req, http_resp_t *resp, http_server_t *s
 		}
 		parameters -> delete( parameters );
 	}
-	
+
 	if( req -> content ) {
 		NSData *content = [NSData dataWithBytes:req -> content length:req -> content_length];
 		[arguments setObject:content forKey:JVWebInterfaceRequestContent];
@@ -142,7 +142,7 @@ static void processStyles( http_req_t *req, http_resp_t *resp, http_server_t *se
 		resp -> printf( resp, "404: Not Found" );
 		return;
 	}
-	
+
 	BOOL variantSearch = NO;
 	NSString *bundleIdentifier = [parts objectAtIndex:2];
 	if( [bundleIdentifier isEqualToString:@"variants"] ) {
@@ -173,7 +173,7 @@ static void processStyles( http_req_t *req, http_resp_t *resp, http_server_t *se
 	} else {
 		path = [[[style bundle] resourcePath] stringByAppendingPathComponent:path];
 		path = [path stringByStandardizingPath];
-	
+
 		if( ! [path hasPrefix:[[style bundle] resourcePath]] ) {
 			resp -> status_code = 404;
 			resp -> reason_phrase = "Not Found";
@@ -229,7 +229,7 @@ static void processEmoticons( http_req_t *req, http_resp_t *resp, http_server_t 
 	[pool release];
 }
 
-static int socketStatus( int sock, int timeoutSecs, int timeoutMsecs ) { 
+static int socketStatus( int sock, int timeoutSecs, int timeoutMsecs ) {
 	int selectResult = 0;
 	fd_set checkSet;
 	struct timeval timeout;
@@ -508,7 +508,7 @@ static int socketStatus( int sock, int timeoutSecs, int timeoutMsecs ) {
 
 		NSMutableDictionary *styles = [NSMutableDictionary dictionary];
 		[info setObject:styles forKey:@"styles"];
-	
+
 		NSString *overrideStyle = [arguments objectForKey:JVWebInterfaceOverrideStyle];
 		if( [overrideStyle length] )
 			[info setObject:overrideStyle forKey:@"overrideStyle"];
@@ -767,7 +767,7 @@ static int socketStatus( int sock, int timeoutSecs, int timeoutMsecs ) {
 #pragma mark -
 
 - (void) performNotification:(NSString *) identifier withContextInfo:(NSDictionary *) context andPreferences:(NSDictionary *) preferences {
-	
+
 }
 
 - (void) newMessage:(NSNotification *) notification {
@@ -807,11 +807,11 @@ static int socketStatus( int sock, int timeoutSecs, int timeoutMsecs ) {
 			JVStyle *style = [[info objectForKey:@"styles"] objectForKey:[view uniqueIdentifier]];
 			if( ! style ) {
 				NSMutableDictionary *styles = [info objectForKey:@"styles"];
-	
+
 				NSString *overrideStyle = [info objectForKey:@"overrideStyle"];
 				if( [overrideStyle length] ) style = [JVStyle styleWithIdentifier:overrideStyle];
 				if( ! style ) style = [JVStyle styleWithIdentifier:[[view style] identifier]];
-	
+
 				[styles setObject:style forKey:[view uniqueIdentifier]];
 			}
 
@@ -862,11 +862,11 @@ static int socketStatus( int sock, int timeoutSecs, int timeoutMsecs ) {
 			JVStyle *style = [[info objectForKey:@"styles"] objectForKey:[view uniqueIdentifier]];
 			if( ! style ) {
 				NSMutableDictionary *styles = [info objectForKey:@"styles"];
-	
+
 				NSString *overrideStyle = [info objectForKey:@"overrideStyle"];
 				if( [overrideStyle length] ) style = [JVStyle styleWithIdentifier:overrideStyle];
 				if( ! style ) style = [JVStyle styleWithIdentifier:[[view style] identifier]];
-	
+
 				[styles setObject:style forKey:[view uniqueIdentifier]];
 			}
 
@@ -897,15 +897,15 @@ static int socketStatus( int sock, int timeoutSecs, int timeoutMsecs ) {
 }
 
 - (void) memberJoined:(JVChatRoomMember *) member inRoom:(JVChatRoomPanel *) room {
-	
+
 }
 
 - (void) memberParted:(JVChatRoomMember *) member fromRoom:(JVChatRoomPanel *) room forReason:(NSAttributedString *) reason {
-	
+
 }
 
 - (void) memberKicked:(JVChatRoomMember *) member fromRoom:(JVChatRoomPanel *) room by:(JVChatRoomMember *) by forReason:(NSAttributedString *) reason {
-	
+
 }
 
 - (void) joinedRoom:(JVChatRoomPanel *) room {
@@ -930,18 +930,18 @@ static int socketStatus( int sock, int timeoutSecs, int timeoutMsecs ) {
 }
 
 - (void) kickedFromRoom:(JVChatRoomPanel *) room by:(JVChatRoomMember *) by forReason:(NSAttributedString *) reason {
-	
+
 }
 
 - (void) topicChangedTo:(NSAttributedString *) topic inRoom:(JVChatRoomPanel *) room by:(JVChatRoomMember *) member {
-	
+
 }
 
 - (void) connected:(MVChatConnection *) connection {
-	
+
 }
 
 - (void) disconnecting:(MVChatConnection *) connection {
-	
+
 }
 @end

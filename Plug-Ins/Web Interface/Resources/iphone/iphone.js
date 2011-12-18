@@ -1,16 +1,16 @@
-Element.prototype.removeStyleClass = function(className) 
+Element.prototype.removeStyleClass = function(className)
 {
     if (this.hasStyleClass(className))
         this.className = this.className.replace(className, "");
 }
 
-Element.prototype.addStyleClass = function(className) 
+Element.prototype.addStyleClass = function(className)
 {
     if (!this.hasStyleClass(className))
         this.className += (this.className.length ? " " + className : className);
 }
 
-Element.prototype.hasStyleClass = function(className) 
+Element.prototype.hasStyleClass = function(className)
 {
     return this.className.indexOf(className) !== -1;
 }

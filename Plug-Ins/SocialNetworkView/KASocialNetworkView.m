@@ -30,14 +30,14 @@
 - (void) dealloc {
 	[_innerGraph release];
 	_innerGraph = nil;
-	
+
 	[super dealloc];
 }
 
 - (void)drawRect:(NSRect)rect {
     NSSet *nodes = [_innerGraph getConnectedNodes];
-	
-	
+
+
 }
 
 @end

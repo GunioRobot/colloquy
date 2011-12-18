@@ -202,7 +202,7 @@ FILE* file;
             fputs("Unable to open file.", stderr);
             exit(-1);
         }
-    } 
+    }
     SHA1Init(&context);
     while (!feof(file)) {  /* note: what if ferror(file) */
         i = fread(buffer, 1, 16384, file);

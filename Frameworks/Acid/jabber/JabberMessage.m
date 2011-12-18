@@ -115,7 +115,7 @@ XPathQuery* QRY_DELAY;
     else if (isComposing || isActiveChatState)
         eventType = JMEVENT_COMPOSING_REQUEST;
     else if (hasID || isActiveChatState)
-        eventType = JMEVENT_COMPOSING_CANCEL;    
+        eventType = JMEVENT_COMPOSING_CANCEL;
 }
 
 -(JabberID*) to

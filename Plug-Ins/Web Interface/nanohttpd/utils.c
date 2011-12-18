@@ -43,7 +43,7 @@ void url_decode( char *p, int queryString ) {
 				break;
 			}
 
-			default: 
+			default:
 			*pD++ = *p++;
        }
 	}
